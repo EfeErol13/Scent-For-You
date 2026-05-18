@@ -65,7 +65,7 @@
 
         .options-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
             gap: 12px;
             margin-bottom: 30px;
         }
@@ -170,7 +170,7 @@
 
         @media (max-width: 600px) {
             .container { padding: 20px; margin: 10px auto; }
-            .options-grid { grid-template-columns: 1fr 1fr 1fr; }
+            .options-grid { grid-template-columns: repeat(3, 1fr); }
         }
     </style>
 </head>
@@ -193,8 +193,24 @@
 
         <div id="step-age" class="hidden">
             <div class="step-title"><i class="fa-solid fa-cake-candles"></i> Select Your Age Range</div>
-            <div class="options-grid" id="age-buttons-container">
-                </div>
+            <div class="options-grid">
+                <button class="option-btn" onclick="selectAge('10-15', event)">10-15</button>
+                <button class="option-btn" onclick="selectAge('15-20', event)">15-20</button>
+                <button class="option-btn" onclick="selectAge('20-25', event)">20-25</button>
+                <button class="option-btn" onclick="selectAge('25-30', event)">25-30</button>
+                <button class="option-btn" onclick="selectAge('30-35', event)">30-35</button>
+                <button class="option-btn" onclick="selectAge('35-40', event)">35-40</button>
+                <button class="option-btn" onclick="selectAge('40-45', event)">40-45</button>
+                <button class="option-btn" onclick="selectAge('45-50', event)">45-50</button>
+                <button class="option-btn" onclick="selectAge('50-55', event)">50-55</button>
+                <button class="option-btn" onclick="selectAge('55-60', event)">55-60</button>
+                <button class="option-btn" onclick="selectAge('60-65', event)">60-65</button>
+                <button class="option-btn" onclick="selectAge('65-70', event)">65-70</button>
+                <button class="option-btn" onclick="selectAge('70-75', event)">70-75</button>
+                <button class="option-btn" onclick="selectAge('75-80', event)">75-80</button>
+                <button class="option-btn" onclick="selectAge('80-85', event)">80-85</button>
+                <button class="option-btn" onclick="selectAge('85-90', event)">85-90</button>
+            </div>
         </div>
 
         <div id="step-environment" class="hidden">
@@ -212,29 +228,28 @@
     <script>
         let selections = { gender: null, age: null, env: null };
 
-        // PARFÜM DATA GRUPLARI (Yaş grupları otomatik eşleşecek)
         const database = {
             male: {
-                young: { // 10-20
+                young: {
                     school: [{ brand: "Zara", name: "Seoul", desc: "Light, fresh, tangerine and marine notes. Perfect for daily school life.", notes: ["Marine Notes", "Tangerine", "Amber"] }],
                     daily: [{ brand: "Nautica", name: "Voyage", desc: "Legendary budget-friendly summer freshness featuring green apple.", notes: ["Green Apple", "Water Lily", "Cedarwood"] }],
                     beach: [{ brand: "Zara", name: "Lisboa", desc: "Zesty lemon breeze, ideal for cooling down at the beach.", notes: ["Lemon", "Jasmine", "Cedarwood"] }],
                     special: [{ brand: "Versace", name: "Eros EDT", desc: "Energetic mint-apple vibe that stands out beautifully in any crowd.", notes: ["Mint", "Green Apple", "Vanilla"] }]
                 },
-                college: { // 20-25
+                college: {
                     school: [{ brand: "YSL", name: "Y EDP", desc: "Modern, clean, apple and woody notes. Lasts all day in lecture halls.", notes: ["Apple", "Sage", "Cedarwood"] }],
                     work: [{ brand: "Prada", name: "L'Homme", desc: "The ultimate clean office scent. Luxurious soapy freshness with elegant iris.", notes: ["Iris", "Neroli", "Amber"] }],
                     daily: [{ brand: "Dior", name: "Sauvage EDT", desc: "Intense bergamot and pepper combo. A wildly popular signature daily scent.", notes: ["Calabrian Bergamot", "Sichuan Pepper", "Ambroxan"] }],
                     beach: [{ brand: "Kenzo", name: "Homme Intense", desc: "Sea salt and fig tree notes, offering a tropical woody summer vibe.", notes: ["Sea Salt", "Fig", "Sandalwood"] }],
                     special: [{ brand: "Xerjoff", name: "Naxos", desc: "Perfect harmony of honey, tobacco, and vanilla. Outstanding premium performance.", notes: ["Honey", "Tobacco Leaf", "Vanilla"] }]
                 },
-                adult: { // 25-50
+                adult: {
                     work: [{ brand: "Terre d'Hermes", name: "Hermes EDT", desc: "Earthy flint and bitter orange, highly praised in professional business life.", notes: ["Orange", "Flint", "Cedar", "Vetiver"] }],
                     daily: [{ brand: "Creed", name: "Aventus", desc: "Legendary blend of rich pineapple and smoky birch notes. Absolute daily luxury.", notes: ["Pineapple", "Birch", "Musk"] }],
                     beach: [{ brand: "Armani", name: "Acqua Di Gio Parfum", desc: "Deep marine essence with a touch of rich incense, fantastic for coastal sunsets.", notes: ["Marine Notes", "Rosemary", "Incense"] }],
                     special: [{ brand: "Tom Ford", name: "Noir Extreme", desc: "Seductive cardamom and exotic kulfi ice cream notes. Great for date nights.", notes: ["Kulfi", "Cardamom", "Vanilla"] }]
                 },
-                mature: { // 50-90
+                mature: {
                     work: [{ brand: "Chanel", name: "Bleu de Chanel Parfum", desc: "Deep, rich, majestic woody trail layered with smooth sandalwood for supreme status.", notes: ["Sandalwood", "Citrus", "Cedar"] }],
                     daily: [{ brand: "Guerlain", name: "Vetiver", desc: "The gold standard of masculine elegance. Fresh, earthy, clean, and completely timeless.", notes: ["Vetiver", "Tobacco", "Bergamot"] }],
                     beach: [{ brand: "Tom Ford", name: "Costa Azzurra", desc: "A luxurious coastal escape blending salty sea air with rich, aromatic evergreen oaks.", notes: ["Driftwood", "Sea Salt", "Oud"] }],
@@ -242,26 +257,26 @@
                 }
             },
             female: {
-                young: { // 10-20
+                young: {
                     school: [{ brand: "Zara", name: "Wonder Rose", desc: "Joyful, sweet pear and red berry blend that fits nicely into school hours.", notes: ["Pear", "Red Berries", "Vanilla"] }],
                     daily: [{ brand: "Zara", name: "Orchid", desc: "Fresh orchid and blackcurrant notes, providing a clean, airy feel.", notes: ["Orchid", "Bergamot", "Blackcurrant"] }],
                     beach: [{ brand: "Zara", name: "Femme", desc: "Peony and vanilla blend with soft, powdery sunscreen undertones.", notes: ["Peony", "Vanilla", "Musk"] }],
                     special: [{ brand: "Aquolina", name: "Pink Sugar", desc: "Playful cotton candy and caramel theme, highly cheerful youth fragrance.", notes: ["Cotton Candy", "Caramel", "Strawberry"] }]
                 },
-                college: { // 20-25
+                college: {
                     school: [{ brand: "Chanel", name: "Chance Eau Tendre", desc: "High-class, crisp, and sophisticated quince and jasmine for university women.", notes: ["Quince", "Grapefruit", "Jasmine"] }],
                     work: [{ brand: "Lancome", name: "Idole", desc: "Spotless clean rose and white musk. Very bright and professional for office wear.", notes: ["Rose", "Pear", "White Musk"] }],
                     daily: [{ brand: "Ariana Grande", name: "Cloud", desc: "Soft, whipped cream and coconut notes. A highly viral and cozy everyday scent.", notes: ["Whipped Cream", "Coconut", "Praline"] }],
                     beach: [{ brand: "Sol de Janeiro", name: "Cheirosa 62", desc: "Pistachio and salted caramel perfection, radiating warm beach energy.", notes: ["Pistachio", "Salted Caramel", "Vanilla"] }],
                     special: [{ brand: "Carolina Herrera", name: "Good Girl", desc: "Iconic stiletto bottle featuring rich cocoa and coffee. Captivating night-out choice.", notes: ["Almond", "Coffee", "Cocoa"] }]
                 },
-                adult: { // 25-50
+                adult: {
                     work: [{ brand: "Narciso Rodriguez", name: "For Her Pure Musc", desc: "Noble musk that exudes modern corporate confidence and empowerment.", notes: ["Musk", "White Flowers", "Cashmeran"] }],
                     daily: [{ brand: "Chanel", name: "Coco Mademoiselle", desc: "Timeless orange and rich patchouli blend. Highly elegant and wealthy aura.", notes: ["Orange", "Patchouli", "Turkish Rose"] }],
                     beach: [{ brand: "Estee Lauder", name: "Bronze Goddess", desc: "A luxury beach classic filled with rich coconut, tiare flower, and glowing warmth.", notes: ["Coconut", "Tiare Flower", "Amber"] }],
                     special: [{ brand: "Parfums de Marly", name: "Delina", desc: "The queen of niche. Heavenly Turkish rose mixed with exotic lychee and rhubarb.", notes: ["Turkish Rose", "Lychee", "Rhabarb", "Vanilla"] }]
                 },
-                mature: { // 50-90
+                mature: {
                     work: [{ brand: "Dior", name: "J'adore EDP", desc: "A glorious, majestic bouquet of ylang-ylang, rose, and jasmine. Pure classic grace.", notes: ["Ylang-Ylang", "Damask Rose", "Jasmine"] }],
                     daily: [{ brand: "Hermes", name: "Eau des Merveilles", desc: "An enchanting, warm woody-amber scent without dominant flowers. Pure poetic luxury.", notes: ["Ambergris", "Elemi Resin", "Orange"] }],
                     beach: [{ brand: "Tom Ford", name: "Soleil Blanc", desc: "Luxe coco de mer and sultry ylang-ylang. Exudes high-end resort private island vibe.", notes: ["Coconut", "Ylang-Ylang", "Cardamom"] }],
@@ -269,26 +284,6 @@
                 }
             }
         };
-
-        // YAŞ BUTONLARINI 5'ER 5'ER DOĞURAN FONKSİYON (10'dan 90'a)
-        function generateAgeButtons() {
-            const container = document.getElementById('age-buttons-container');
-            container.innerHTML = '';
-            
-            // 10-15 ve 15-20 elle eklensin, sonrakiler 5'er artsın
-            const ageRanges = ['10-15', '15-20'];
-            for(let i = 20; i < 90; i += 5) {
-                ageRanges.push(`${i}-${i+5}`);
-            }
-
-            ageRanges.forEach(range => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn';
-                btn.innerText = range;
-                btn.onclick = (e) => selectAge(range, e);
-                container.appendChild(btn);
-            });
-        }
 
         function selectGender(gender) {
             selections.gender = gender;
@@ -300,7 +295,6 @@
             } else {
                 event.currentTarget.classList.add('active');
             }
-            generateAgeButtons();
             document.getElementById('step-age').classList.remove('hidden');
             resetFromStep('age');
         }
@@ -334,13 +328,11 @@
 
             let activeEnvs = [];
 
-            // Dinamik Mekan Dağılımı Kuralları:
             if (age === '10-15' || age === '15-20') {
                 activeEnvs = ['school', 'daily', 'beach', 'special'];
             } else if (age === '20-25') {
                 activeEnvs = ['school', 'work', 'daily', 'beach', 'special'];
             } else {
-                // 25 yaşından 90 yaşına kadar olan tüm gruplarda sadece iş ve diğerleri gelir
                 activeEnvs = ['work', 'daily', 'beach', 'special'];
             }
 
@@ -372,12 +364,10 @@
             const resultsContainer = document.getElementById('perfume-results');
             resultsContainer.innerHTML = '';
 
-            // Seçilen yaş aralığına göre veritabanı kümesini haritalandır
             let ageGroup = 'adult';
             if (selections.age === '10-15' || selections.age === '15-20') ageGroup = 'young';
             else if (selections.age === '20-25') ageGroup = 'college';
             else {
-                // Yaş aralığının ilk sayısını çek (Örn: "55-60" -> 55)
                 let firstAge = parseInt(selections.age.split('-')[0]);
                 if (firstAge >= 50) ageGroup = 'mature';
             }
