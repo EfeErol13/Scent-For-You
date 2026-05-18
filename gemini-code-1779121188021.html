@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scent For You</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border: 1px solid #f0f0f0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            color: #888888;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #555555;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        button {
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            padding: 12px 15px;
+            font-size: 0.95rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        button:hover {
+            border-color: #000000;
+            background-color: #faf0e6;
+        }
+
+        button.active {
+            background-color: #000000;
+            color: #ffffff;
+            border-color: #000000;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #occasion-section {
+            margin-top: 20px;
+            border-top: 1px solid #eeeeee;
+            padding-top: 30px;
+        }
+
+        .occasion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+        }
+
+        #result-section {
+            margin-top: 40px;
+            padding: 30px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            border: 1px dashed #cccccc;
+        }
+
+        .perfume-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #111111;
+            margin-top: 10px;
+        }
+
+        .reset-btn {
+            margin-top: 25px;
+            background-color: #000000;
+            color: #ffffff;
+            border: none;
+            padding: 10px 25px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .reset-btn:hover {
+            background-color: #333333;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Scent For You</h1>
+        <p class="subtitle">Find your perfect fragrance match</p>
+
+        <div id="age-section">
+            <p class="step-title">Select Your Age Range:</p>
+            <div class="grid" id="age-grid"></div>
+        </div>
+
+        <div id="occasion-section" class="hidden">
+            <p class="step-title">Select the Occasion:</p>
+            <div class="occasion-grid">
+                <button class="occasion-btn" data-occasion="everyday">Everyday</button>
+                <button class="occasion-btn" data-occasion="party">Party</button>
+                <button class="occasion-btn" data-occasion="work">Work</button>
+                <button class="occasion-btn" data-occasion="meeting">Meeting</button>
+                <button class="occasion-btn" data-occasion="beach">Beach</button>
+            </div>
+        </div>
+
+        <div id="result-section" class="hidden">
+            <p style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; color: #777;">Your Recommended Fragrance:</p>
+            <div class="perfume-name" id="perfume-display"></div>
+            <button class="reset-btn" onclick="resetApp()">Start Over</button>
+        </div>
+    </div>
+
+    <script>
+        // Parfüm Veri Tabanı (Kaliteli Designer ve Niş Parfümler)
+        const perfumeDatabase = {
+            "10-15": {
+                everyday: "Nautica Voyage / Zara Vibrant Leather Bogoss",
+                party: "Versace Eros EDT",
+                work: "Lacoste L.12.12 Blanc",
+                meeting: "Bleu de Chanel EDT",
+                beach: "Davidoff Cool Water"
+            },
+            "15-20": {
+                everyday: "Azzaro Wanted by Night / Yves Saint Laurent Y EDP",
+                party: "Jean Paul Gaultier Ultra Male",
+                work: "Montblanc Explorer",
+                meeting: "Prada L'Homme",
+                beach: "Dolce & Gabbana Light Blue Intense"
+            },
+            "20-25": {
+                everyday: "Bleu de Chanel EDP / Lattafa Khamrah",
+                party: "Parfums de Marly Layton",
+                work: "Dior Sauvage EDP",
+                meeting: "Tissot-level Classic: Terre d'Hermes",
+                beach: "Acqua di Gio Profondo"
+            },
+            "25-30": {
+                everyday: "Xerjoff Naxos",
+                party: "Viktor&Rolf Spicebomb Extreme",
+                work: "Chanel Allure Homme Sport Eau Extreme",
+                meeting: "Bleu de Chanel Parfum",
+                beach: "Creed Virgin Island Water"
+            },
+            "30-35": {
+                everyday: "Creed Aventus",
+                party: "Tom Ford Noir Extreme",
+                work: "Prada Amber Pour Homme",
+                meeting: "Dior Homme Intense",
+                beach: "Louis Vuitton Imagination"
+            },
+            "35-40": {
+                everyday: "Roja Elysium",
+                party: "Kilian Angels' Share",
+                work: "Grey Vetiver by Tom Ford",
+                meeting: "Patek-level Elite: Creed Green Irish Tweed",
+                beach: "Xerjoff Renaissance"
+            },
+            "40-45": {
+                everyday: "Hermes Terre d'Hermes Parfum",
+                party: "Initio Oud for Greatness",
+                work: "Tom Ford Beau de Jour",
+                meeting: "Houbigant Duc de Vervins",
+                beach: "Acqua di Parma Colonia Essenza"
+            },
+            "45-50": {
+                everyday: "Chanel Egoiste Platinum",
+                party: "Amouage Reflection Man",
+                work: "Cartier Declaration",
+                meeting: "Tom Ford Oud Wood",
+                beach: "Maison Francis Kurkdjian Aqua Celestia"
+            },
+            "50-55": {
+                everyday: "Guerlain Vetiver",
+                party: "Parfums de Marly Carlisle",
+                work: "Bottega Veneta Pour Homme",
+                meeting: "Penhaligon's Sartorial",
+                beach: "Creed Erolfa"
+            },
+            "55-60": {
+                everyday: "Giorgio Armani Eau Pour Homme",
+                party: "Christian Dior Bois d'Argent",
+                work: "Lalique Encre Noire",
+                meeting: "Roja Danger Pour Homme",
+                beach: "Tom Ford Costa Azzurra"
+            },
+            "60-65": {
+                everyday: "Aramis Havana",
+                party: "Clive Christian X Men",
+                work: "Dunhill Edition",
+                meeting: "Ralph Lauren Polo Green (Vintage)",
+                beach: "Caron Pour Un Homme"
+            },
+            "65-70": {
+                everyday: "Acqua di Parma Colonia",
+                party: "Guerlain Habit Rouge",
+                work: "Floris No. 89",
+                meeting: "Creed Bois du Portugal",
+                beach: "4711 Original Eau de Cologne"
+            },
+            "70-75": {
+                everyday: "Geo. F. Trumper Sandalwood",
+                party: "Knize Ten",
+                work: "Blenheim Bouquet by Penhaligon's",
+                meeting: "Roja Fetish Pour Homme",
+                beach: "Caswell-Massey Number Six"
+            },
+            "75-80": {
+                everyday: "Old Spice Classic",
+                party: "Caron Yatagan",
+                work: "Tabac Original",
+                meeting: "Guerlain Derby",
+                beach: "Muelhens 4711"
+            },
+            "80-85": {
+                everyday: "Bay Rum Classic",
+                party: "Pour Un Homme de Caron Le Soir",
+                work: "Aqua di Selva",
+                meeting: "Houbigant Fougere Royale",
+                beach: "Capucci Pour Homme"
+            },
+            "85-90": {
+                everyday: "English Leather",
+                party: "Blunderbuss Select",
+                work: "Brut Original",
+                meeting: "Truefitt & Hill Grafton",
+                beach: "St Johns Bay Rum"
+            }
+        };
+
+        let selectedAge = null;
+
+        // Yaş butonlarını dinamik olarak oluşturma
+        const ageGrid = document.getElementById('age-grid');
+        Object.keys(perfumeDatabase).forEach(ageRange => {
+            const btn = document.createElement('button');
+            btn.textContent = ageRange;
+            btn.className = 'age-btn';
+            btn.onclick = () => selectAgeRange(ageRange, btn);
+            ageGrid.appendChild(btn);
+        });
+
+        function selectAgeRange(ageRange, element) {
+            selectedAge = ageRange;
+            
+            // Aktif buton stilini güncelle
+            document.querySelectorAll('.age-btn').forEach(b => b.classList.remove('active'));
+            element.classList.add('active');
+
+            // Bir sonraki aşamayı göster
+            document.getElementById('occasion-section').classList.remove('hidden');
+            
+            // Eğer daha önce sonuç açıksa temizle ve gizle
+            document.getElementById('result-section').classList.add('hidden');
+            document.querySelectorAll('.occasion-btn').forEach(b => b.classList.remove('active'));
+        }
+
+        // Ortam butonlarına tıklama olayı
+        document.querySelectorAll('.occasion-btn').forEach(button => {
+            button.onclick = function() {
+                document.querySelectorAll('.occasion-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const occasion = this.getAttribute('data-occasion');
+                const recommendedPerfume = perfumeDatabase[selectedAge][occasion];
+
+                // Sonucu ekranda göster
+                document.getElementById('perfume-display').textContent = recommendedPerfume;
+                document.getElementById('result-section').classList.remove('hidden');
+                
+                // Sayfayı sonuca doğru yumuşakça kaydır
+                document.getElementById('result-section').scrollIntoView({ behavior: 'smooth' });
+            };
+        });
+
+        function resetApp() {
+            selectedAge = null;
+            document.querySelectorAll('.age-btn, .occasion-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('occasion-section').classList.add('hidden');
+            document.getElementById('result-section').classList.add('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
