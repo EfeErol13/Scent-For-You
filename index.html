@@ -3,329 +3,465 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scent For You</title>
+    <title>Scent For You - Perfume Advisor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #bda370;
+            --bg: #f9f9f9;
+            --card-bg: #ffffff;
+            --text: #333333;
+        }
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #ffffff;
-            color: #333333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
             padding: 20px;
         }
 
         .container {
-            width: 100%;
             max-width: 800px;
-            background: #ffffff;
+            margin: 40px auto;
+            background: var(--card-bg);
             padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            border: 1px solid #f0f0f0;
-            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.03);
         }
 
         h1 {
-            font-size: 2.5rem;
+            text-align: center;
             font-weight: 300;
             letter-spacing: 2px;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
+            color: var(--primary);
             text-transform: uppercase;
         }
 
-        .subtitle {
-            color: #888888;
-            margin-bottom: 40px;
-            font-style: italic;
+        h1 span {
+            color: var(--accent);
+            font-weight: 600;
         }
 
         .step-title {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            font-weight: 600;
-            color: #555555;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .grid {
+        .options-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
             margin-bottom: 30px;
         }
 
-        button {
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
-            padding: 12px 15px;
-            font-size: 0.95rem;
-            border-radius: 6px;
+        .option-btn {
+            background: #fff;
+            border: 2px solid #eee;
+            padding: 20px 15px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            text-align: center;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
         }
 
-        button:hover {
-            border-color: #000000;
-            background-color: #faf0e6;
+        .option-btn i {
+            display: block;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #ccc;
+            transition: color 0.3s ease;
         }
 
-        button.active {
-            background-color: #000000;
-            color: #ffffff;
-            border-color: #000000;
+        .option-btn:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .option-btn.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .option-btn.active i {
+            color: var(--accent);
+        }
+
+        .option-btn.active.female-active {
+            border-color: #d4a5b8;
+            background: #4a3740;
+        }
+        .option-btn.active.female-active i {
+            color: #d4a5b8;
         }
 
         .hidden {
             display: none;
         }
 
-        #occasion-section {
-            margin-top: 20px;
-            border-top: 1px solid #eeeeee;
-            padding-top: 30px;
-        }
-
-        .occasion-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-        }
-
         #result-section {
             margin-top: 40px;
-            padding: 30px;
-            background-color: #fafafa;
-            border-radius: 8px;
-            border: 1px dashed #cccccc;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+        }
+
+        .perfume-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-left: 5px solid var(--accent);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .perfume-brand {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            font-weight: 600;
         }
 
         .perfume-name {
-            font-size: 1.8rem;
-            font-weight: 400;
-            color: #111111;
-            margin-top: 10px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin: 5px 0 10px 0;
         }
 
-        .reset-btn {
-            margin-top: 25px;
-            background-color: #000000;
-            color: #ffffff;
-            border: none;
-            padding: 10px 25px;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
+        .perfume-desc {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
         }
 
-        .reset-btn:hover {
-            background-color: #333333;
+        .perfume-notes {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .note-tag {
+            background: #f0f0f0;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 20px; margin: 10px auto; }
+            .options-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Scent For You</h1>
-        <p class="subtitle">Find your perfect fragrance match</p>
+        <h1>Scent <span>For You</span></h1>
 
-        <div id="age-section">
-            <p class="step-title">Select Your Age Range:</p>
-            <div class="grid" id="age-grid"></div>
-        </div>
-
-        <div id="occasion-section" class="hidden">
-            <p class="step-title">Select the Occasion:</p>
-            <div class="occasion-grid">
-                <button class="occasion-btn" data-occasion="everyday">Everyday</button>
-                <button class="occasion-btn" data-occasion="party">Party</button>
-                <button class="occasion-btn" data-occasion="work">Work</button>
-                <button class="occasion-btn" data-occasion="meeting">Meeting</button>
-                <button class="occasion-btn" data-occasion="beach">Beach</button>
+        <div id="step-gender">
+            <div class="step-title"><i class="fa-solid fa-venus-mars"></i> Select Your Gender</div>
+            <div class="options-grid">
+                <button class="option-btn" onclick="selectGender('male')">
+                    <i class="fa-solid fa-mars"></i>Male
+                </button>
+                <button class="option-btn" onclick="selectGender('female')">
+                    <i class="fa-solid fa-venus"></i>Female
+                </button>
             </div>
         </div>
 
+        <div id="step-age" class="hidden">
+            <div class="step-title"><i class="fa-solid fa-cake-candles"></i> Select Your Age Range</div>
+            <div class="options-grid">
+                <button class="option-btn" onclick="selectAge('10-15')">10 - 15</button>
+                <button class="option-btn" onclick="selectAge('15-20')">15 - 20</button>
+                <button class="option-btn" onclick="selectAge('20-25')">20 - 25</button>
+                <button class="option-btn" onclick="selectAge('25+')">25+</button>
+            </div>
+        </div>
+
+        <div id="step-environment" class="hidden">
+            <div class="step-title"><i class="fa-solid fa-compass"></i> Select Atmosphere / Occasion</div>
+            <div class="options-grid" id="env-buttons-container">
+                </div>
+        </div>
+
         <div id="result-section" class="hidden">
-            <p style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; color: #777;">Your Recommended Fragrance:</p>
-            <div class="perfume-name" id="perfume-display"></div>
-            <button class="reset-btn" onclick="resetApp()">Start Over</button>
+            <div class="step-title" style="color: var(--primary);"><i class="fa-solid fa-wand-magic-sparkles"></i> Recommendations For You</div>
+            <div id="perfume-results"></div>
         </div>
     </div>
 
     <script>
-        // Parfüm Veri Tabanı (Kaliteli Designer ve Niş Parfümler)
-        const perfumeDatabase = {
-            "10-15": {
-                everyday: "Nautica Voyage / Zara Vibrant Leather Bogoss",
-                party: "Versace Eros EDT",
-                work: "Lacoste L.12.12 Blanc",
-                meeting: "Bleu de Chanel EDT",
-                beach: "Davidoff Cool Water"
+        let selections = { gender: null, age: null, env: null };
+
+        const perfumeData = {
+            male: {
+                '10-15': {
+                    school: [
+                        { brand: "Zara", name: "Seoul", desc: "Light, fresh, tangerine and marine notes. A perfect daily scent for school.", notes: ["Marine Notes", "Tangerine", "Amber"] },
+                        { brand: "Lacoste", name: "L.12.12 White", desc: "Clean, fresh, and sporty scent that feels like a crisp white t-shirt.", notes: ["Grapefruit", "Rosemary", "Suede"] }
+                    ],
+                    daily: [
+                        { brand: "Nautica", name: "Voyage", desc: "Legendary budget-friendly summer freshness featuring green apple and leaf notes.", notes: ["Green Apple", "Water Lily", "Cedarwood"] }
+                    ],
+                    beach: [
+                        { brand: "Zara", name: "Lisboa", desc: "Zesty lemon breeze, ideal for cooling down at the beach or seaside walks.", notes: ["Lemon", "Jasmine", "Cedarwood"] }
+                    ],
+                    special: [
+                        { brand: "Versace", name: "Eros EDT", desc: "Energetic and sweet mint-apple vibe that stands out in any crowd.", notes: ["Mint", "Green Apple", "Vanilla"] }
+                    ]
+                },
+                '15-20': {
+                    school: [
+                        { brand: "Versace", name: "Pour Homme", desc: "Mediterranean breeze vibe. Clean and non-offensive, perfect for high school or college.", notes: ["Limon", "Neroli", "Blue Hyacinth"] },
+                        { brand: "Afnan", name: "9am Dive", desc: "Fresh yet slightly sweet, an amazing choice for crisp school mornings.", notes: ["Mint", "Blackcurrant", "Incense"] }
+                    ],
+                    daily: [
+                        { brand: "Bleu de Chanel EDT", desc: "A timeless masterpiece with citrus and incense. High quality and versatile.", notes: ["Grapefruit", "Incense", "Ginger"] },
+                        { brand: "Lattafa", name: "Fakhar Black", desc: "A modern daily scent with apple and sage notes, inspired by YSL Y.", notes: ["Apple", "Sage", "Tonka Bean"] }
+                    ],
+                    beach: [
+                        { brand: "Davidoff", name: "Cool Water", desc: "Pure ocean waves crashing on the shore with intense marine and mint freshness.", notes: ["Sea Water", "Mint", "Lavender"] }
+                    ],
+                    special: [
+                        { brand: "Jean Paul Gaultier", name: "Le Male Elixir", desc: "Rich honey, tobacco, and lavender blend. A powerhouse for cold weather and special nights.", notes: ["Honey", "Tobacco", "Lavender", "Vanilla"] },
+                        { brand: "Afnan", name: "9pm", desc: "Ultra-long lasting pear and vanilla party scent, highly loved by younger crowds.", notes: ["Pear", "Lavender", "Vanilla"] }
+                    ]
+                },
+                '20-25': {
+                    school: [
+                        { brand: "YSL", name: "Y EDP", desc: "Modern, clean, apple and woody notes. Stays with you all day in college halls.", notes: ["Apple", "Sage", "Cedarwood"] },
+                        { brand: "Armani", name: "Acqua Di Gio Profondo", desc: "Deep marine notes, masculine and ultra-fresh for university life.", notes: ["Marine Notes", "Rosemary", "Patchouli"] }
+                    ],
+                    work: [
+                        { brand: "Prada", name: "L'Homme", desc: "The ultimate clean office scent. Luxurious soapy freshness with elegant iris.", notes: ["Iris", "Neroli", "Amber"] },
+                        { brand: "Montblanc", name: "Explorer", desc: "Woody and citrusy blend, highly professional and charismatic for work environments.", notes: ["Bergamot", "Leather", "Patchouli"] }
+                    ],
+                    daily: [
+                        { brand: "Dior", name: "Sauvage EDT", desc: "Intense bergamot and pepper combo. A wildly popular signature daily scent.", notes: ["Calabrian Bergamot", "Sichuan Pepper", "Ambroxan"] }
+                    ],
+                    beach: [
+                        { brand: "Kenzo", name: "Homme Intense", desc: "Sea salt and fig tree notes, offering an amazing tropical woody vibe for summer days.", notes: ["Sea Salt", "Fig", "Sandalwood"] }
+                    ],
+                    special: [
+                        { brand: "Xerjoff", name: "Naxos", desc: "Perfect harmony of honey, tobacco, and vanilla. Pure luxury with outstanding performance.", notes: ["Honey", "Tobacco Leaf", "Vanilla", "Lavender"] },
+                        { brand: "Lattafa", name: "Khamrah", desc: "Sweet, warm cinnamon and dates. Turns heads easily on cold winter nights.", notes: ["Cinnamon", "Dates", "Praline", "Vanilla"] }
+                    ]
+                },
+                '25+': {
+                    work: [
+                        { brand: "Terre d'Hermes", name: "Hermes EDT", desc: "Mature, masculine blend of earthy flint and bitter orange, built for the corporate world.", notes: ["Orange", "Flint", "Cedar", "Vetiver"] }
+                    ],
+                    daily: [
+                        { brand: "Creed", name: "Aventus", desc: "The legendary combination of pineapple and smoky birch notes. Radiates rich daily luxury.", notes: ["Pineapple", "Birch", "Musk"] }
+                    ],
+                    beach: [
+                        { brand: "Armani", name: "Acqua Di Gio Parfum", desc: "Smoky and deep marine essence, ultra-charismatic for premium beach resorts and sunsets.", notes: ["Marine Notes", "Rosemary", "Incense"] }
+                    ],
+                    special: [
+                        { brand: "Tom Ford", name: "Noir Extreme", desc: "Cardamom and kulfi ice cream notes. An incredibly seductive, rich evening fragrance.", notes: ["Kulfi", "Cardamom", "Vanilla"] }
+                    ]
+                }
             },
-            "15-20": {
-                everyday: "Azzaro Wanted by Night / Yves Saint Laurent Y EDP",
-                party: "Jean Paul Gaultier Ultra Male",
-                work: "Montblanc Explorer",
-                meeting: "Prada L'Homme",
-                beach: "Dolce & Gabbana Light Blue Intense"
-            },
-            "20-25": {
-                everyday: "Bleu de Chanel EDP / Lattafa Khamrah",
-                party: "Parfums de Marly Layton",
-                work: "Dior Sauvage EDP",
-                meeting: "Tissot-level Classic: Terre d'Hermes",
-                beach: "Acqua di Gio Profondo"
-            },
-            "25-30": {
-                everyday: "Xerjoff Naxos",
-                party: "Viktor&Rolf Spicebomb Extreme",
-                work: "Chanel Allure Homme Sport Eau Extreme",
-                meeting: "Bleu de Chanel Parfum",
-                beach: "Creed Virgin Island Water"
-            },
-            "30-35": {
-                everyday: "Creed Aventus",
-                party: "Tom Ford Noir Extreme",
-                work: "Prada Amber Pour Homme",
-                meeting: "Dior Homme Intense",
-                beach: "Louis Vuitton Imagination"
-            },
-            "35-40": {
-                everyday: "Roja Elysium",
-                party: "Kilian Angels' Share",
-                work: "Grey Vetiver by Tom Ford",
-                meeting: "Patek-level Elite: Creed Green Irish Tweed",
-                beach: "Xerjoff Renaissance"
-            },
-            "40-45": {
-                everyday: "Hermes Terre d'Hermes Parfum",
-                party: "Initio Oud for Greatness",
-                work: "Tom Ford Beau de Jour",
-                meeting: "Houbigant Duc de Vervins",
-                beach: "Acqua di Parma Colonia Essenza"
-            },
-            "45-50": {
-                everyday: "Chanel Egoiste Platinum",
-                party: "Amouage Reflection Man",
-                work: "Cartier Declaration",
-                meeting: "Tom Ford Oud Wood",
-                beach: "Maison Francis Kurkdjian Aqua Celestia"
-            },
-            "50-55": {
-                everyday: "Guerlain Vetiver",
-                party: "Parfums de Marly Carlisle",
-                work: "Bottega Veneta Pour Homme",
-                meeting: "Penhaligon's Sartorial",
-                beach: "Creed Erolfa"
-            },
-            "55-60": {
-                everyday: "Giorgio Armani Eau Pour Homme",
-                party: "Christian Dior Bois d'Argent",
-                work: "Lalique Encre Noire",
-                meeting: "Roja Danger Pour Homme",
-                beach: "Tom Ford Costa Azzurra"
-            },
-            "60-65": {
-                everyday: "Aramis Havana",
-                party: "Clive Christian X Men",
-                work: "Dunhill Edition",
-                meeting: "Ralph Lauren Polo Green (Vintage)",
-                beach: "Caron Pour Un Homme"
-            },
-            "65-70": {
-                everyday: "Acqua di Parma Colonia",
-                party: "Guerlain Habit Rouge",
-                work: "Floris No. 89",
-                meeting: "Creed Bois du Portugal",
-                beach: "4711 Original Eau de Cologne"
-            },
-            "70-75": {
-                everyday: "Geo. F. Trumper Sandalwood",
-                party: "Knize Ten",
-                work: "Blenheim Bouquet by Penhaligon's",
-                meeting: "Roja Fetish Pour Homme",
-                beach: "Caswell-Massey Number Six"
-            },
-            "75-80": {
-                everyday: "Old Spice Classic",
-                party: "Caron Yatagan",
-                work: "Tabac Original",
-                meeting: "Guerlain Derby",
-                beach: "Muelhens 4711"
-            },
-            "80-85": {
-                everyday: "Bay Rum Classic",
-                party: "Pour Un Homme de Caron Le Soir",
-                work: "Aqua di Selva",
-                meeting: "Houbigant Fougere Royale",
-                beach: "Capucci Pour Homme"
-            },
-            "85-90": {
-                everyday: "English Leather",
-                party: "Blunderbuss Select",
-                work: "Brut Original",
-                meeting: "Truefitt & Hill Grafton",
-                beach: "St Johns Bay Rum"
+            female: {
+                '10-15': {
+                    school: [
+                        { brand: "Zara", name: "Wonder Rose", desc: "Joyful, sweet pear and red berry blend that fits nicely into school hours.", notes: ["Pear", "Red Berries", "Vanilla"] }
+                    ],
+                    daily: [
+                        { brand: "Zara", name: "Orchid", desc: "Fresh orchid and blackcurrant notes, providing a clean, post-shower airy feel.", notes: ["Orkide", "Bergamot", "Blackcurrant"] }
+                    ],
+                    beach: [
+                        { brand: "Zara", name: "Femme", desc: "Peony and vanilla blend with soft, powdery sunscreen undertones for sunny coastlines.", notes: ["Peony", "Vanilla", "Musk"] }
+                    ],
+                    special: [
+                        { brand: "Aquolina", name: "Pink Sugar", desc: "Playful cotton candy and caramel theme, a very sweet and cheerful youth fragrance.", notes: ["Cotton Candy", "Caramel", "Strawberry"] }
+                    ]
+                },
+                '15-20': {
+                    school: [
+                        { brand: "Marc Jacobs", name: "Daisy", desc: "Innocent daisy and wild strawberry notes. Clean and lovely for high school or college.", notes: ["Strawberry", "Violet Leaf", "Jasmine"] }
+                    ],
+                    daily: [
+                        { brand: "Ariana Grande", name: "Cloud", desc: "Soft, whipped cream and coconut notes. A highly viral and cozy everyday scent.", notes: ["Whipped Cream", "Coconut", "Praline"] }
+                    ],
+                    beach: [
+                        { brand: "Sol de Janeiro", name: "Cheirosa 62", desc: "Pistachio and salted caramel perfection, radiating warm sunshine and Rio beach energy.", notes: ["Pistachio", "Salted Caramel", "Vanilla"] }
+                    ],
+                    special: [
+                        { brand: "Carolina Herrera", name: "Good Girl", desc: "Iconic stiletto bottle featuring rich cocoa, coffee, and almond. A captivating night-out fragrance.", notes: ["Almond", "Coffee", "Cocoa"] }
+                    ]
+                },
+                '20-25': {
+                    school: [
+                        { brand: "Chanel", name: "Chance Eau Tendre", desc: "Quince and jasmine notes. High-class, crisp, and sophisticated for university women.", notes: ["Quince", "Grapefruit", "Jasmine"] },
+                        { brand: "Lattafa", name: "Yara Pink", desc: "Fluffy strawberry milkshake vibe. Very smooth, comforting, and gets endless compliments.", notes: ["Strawberry", "Gourmand Notes", "Vanilla"] }
+                    ],
+                    work: [
+                        { brand: "Lancome", name: "Idole", desc: "Spotless clean rose and white musk. Very bright, professional, and elegant for office settings.", notes: ["Rose", "Pear", "White Musk"] }
+                    ],
+                    daily: [
+                        { brand: "Dior", name: "Miss Dior Blooming Bouquet", desc: "Peony and rose petals. Feels like a fresh luxury bouquet for beautiful daily wear.", notes: ["Pink Peony", "Damask Rose", "White Musk"] }
+                    ],
+                    beach: [
+                        { brand: "Estee Lauder", name: "Bronze Goddess", desc: "A luxury beach classic filled with rich coconut, tiare flower, and warm skin warmth.", notes: ["Coconut", "Tiare Flower", "Amber"] }
+                    ],
+                    special: [
+                        { brand: "Yves Saint Laurent", name: "Black Opium", desc: "Seductive coffee, vanilla, and pear combination. A staple for exciting winter nights.", notes: ["Coffee", "Vanilla", "Pear"] }
+                    ]
+                },
+                '25+': {
+                    work: [
+                        { brand: "Narciso Rodriguez", name: "For Her Pure Musc", desc: "Noble and elegant musk. Exudes corporate confidence, neatness, and empowerment.", notes: ["Musk", "White Flowers", "Cashmeran"] }
+                    ],
+                    daily: [
+                        { brand: "Chanel", name: "Coco Mademoiselle", desc: "Timeless orange and patchouli blend. Elegant, rich, and classy for everyday wear.", notes: ["Orange", "Patchouli", "Turkish Rose"] }
+                    ],
+                    beach: [
+                        { brand: "Tom Ford", name: "Soleil Blanc", desc: "Cardamom, ylang-ylang, and premium coco de mer. Ultra-luxe vacation and beach club perfume.", notes: ["Coconut", "Ylang-Ylang", "Cardamom"] }
+                    ],
+                    special: [
+                        { brand: "Maison Francis Kurkdjian", name: "Baccarat Rouge 540", desc: "Exquisite saffron and amberwood. The most famous luxury niche scent that easily commands the room.", notes: ["Saffron", "Jasmine", "Amberwood"] }
+                    ]
+                }
             }
         };
 
-        let selectedAge = null;
-
-        // Yaş butonlarını dinamik olarak oluşturma
-        const ageGrid = document.getElementById('age-grid');
-        Object.keys(perfumeDatabase).forEach(ageRange => {
-            const btn = document.createElement('button');
-            btn.textContent = ageRange;
-            btn.className = 'age-btn';
-            btn.onclick = () => selectAgeRange(ageRange, btn);
-            ageGrid.appendChild(btn);
-        });
-
-        function selectAgeRange(ageRange, element) {
-            selectedAge = ageRange;
+        function selectGender(gender) {
+            selections.gender = gender;
+            const buttons = document.querySelectorAll('#step-gender .option-btn');
+            buttons.forEach(btn => btn.classList.remove('active', 'female-active'));
             
-            // Aktif buton stilini güncelle
-            document.querySelectorAll('.age-btn').forEach(b => b.classList.remove('active'));
-            element.classList.add('active');
-
-            // Bir sonraki aşamayı göster
-            document.getElementById('occasion-section').classList.remove('hidden');
-            
-            // Eğer daha önce sonuç açıksa temizle ve gizle
-            document.getElementById('result-section').classList.add('hidden');
-            document.querySelectorAll('.occasion-btn').forEach(b => b.classList.remove('active'));
+            const selectedBtn = event.currentTarget;
+            if (gender === 'female') {
+                selectedBtn.classList.add('active', 'female-active');
+            } else {
+                selectedBtn.classList.add('active');
+            }
+            document.getElementById('step-age').classList.remove('hidden');
+            resetFromStep('age');
         }
 
-        // Ortam butonlarına tıklama olayı
-        document.querySelectorAll('.occasion-btn').forEach(button => {
-            button.onclick = function() {
-                document.querySelectorAll('.occasion-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
+        function selectAge(age) {
+            selections.age = age;
+            const buttons = document.querySelectorAll('#step-age .option-btn');
+            buttons.forEach(btn => btn.classList.remove('active', 'female-active'));
+            
+            const selectedBtn = event.currentTarget;
+            if (selections.gender === 'female') {
+                selectedBtn.classList.add('active', 'female-active');
+            } else {
+                selectedBtn.classList.add('active');
+            }
+            buildEnvironmentButtons(age);
+            document.getElementById('step-environment').classList.remove('hidden');
+            resetFromStep('env');
+        }
 
-                const occasion = this.getAttribute('data-occasion');
-                const recommendedPerfume = perfumeDatabase[selectedAge][occasion];
+        function buildEnvironmentButtons(age) {
+            const container = document.getElementById('env-buttons-container');
+            container.innerHTML = '';
 
-                // Sonucu ekranda göster
-                document.getElementById('perfume-display').textContent = recommendedPerfume;
-                document.getElementById('result-section').classList.remove('hidden');
-                
-                // Sayfayı sonuca doğru yumuşakça kaydır
-                document.getElementById('result-section').scrollIntoView({ behavior: 'smooth' });
+            const allEnvs = {
+                school: { text: "School", icon: "fa-solid fa-graduation-cap" },
+                work: { text: "Work", icon: "fa-solid fa-briefcase" },
+                daily: { text: "Daily", icon: "fa-solid fa-house-user" },
+                beach: { text: "Beach / Coast", icon: "fa-solid fa-umbrella-beach" },
+                special: { text: "Special Night", icon: "fa-solid fa-champagne-glasses" }
             };
-        });
 
-        function resetApp() {
-            selectedAge = null;
-            document.querySelectorAll('.age-btn, .occasion-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById('occasion-section').classList.add('hidden');
+            let activeEnvs = [];
+
+            if (age === '10-15' || age === '15-20') {
+                activeEnvs = ['school', 'daily', 'beach', 'special'];
+            } else if (age === '20-25') {
+                activeEnvs = ['school', 'work', 'daily', 'beach', 'special'];
+            } else if (age === '25+') {
+                activeEnvs = ['work', 'daily', 'beach', 'special'];
+            }
+
+            activeEnvs.forEach(envKey => {
+                const envInfo = allEnvs[envKey];
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerHTML = `<i class="${envInfo.icon}"></i>${envInfo.text}`;
+                btn.onclick = (e) => selectEnvironment(envKey, e);
+                container.appendChild(btn);
+            });
+        }
+
+        function selectEnvironment(env, e) {
+            selections.env = env;
+            const buttons = document.querySelectorAll('#step-environment .option-btn');
+            buttons.forEach(btn => btn.classList.remove('active', 'female-active'));
+            
+            if (selections.gender === 'female') {
+                e.currentTarget.classList.add('active', 'female-active');
+            } else {
+                e.currentTarget.classList.add('active');
+            }
+            showResults();
+        }
+
+        function showResults() {
+            const resultSection = document.getElementById('result-section');
+            const resultsContainer = document.getElementById('perfume-results');
+            resultsContainer.innerHTML = '';
+
+            const perfumes = perfumeData[selections.gender]?.[selections.age]?.[selections.env] || [];
+
+            if (perfumes.length === 0) {
+                resultsContainer.innerHTML = '<p style="color: #999;">No matching perfumes found for this combination.</p>';
+            } else {
+                perfumes.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'perfume-card';
+                    if(selections.gender === 'female') {
+                        card.style.borderLeftColor = '#d4a5b8';
+                    }
+                    let notesHtml = p.notes.map(n => `<span class="note-tag">${n}</span>`).join('');
+                    card.innerHTML = `
+                        <div class="perfume-brand">${p.brand}</div>
+                        <div class="perfume-name">${p.name}</div>
+                        <div class="perfume-desc">${p.desc}</div>
+                        <div class="perfume-notes">${notesHtml}</div>
+                    `;
+                    resultsContainer.appendChild(card);
+                });
+            }
+            resultSection.classList.remove('hidden');
+            resultSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetFromStep(step) {
+            if (step === 'age') {
+                document.getElementById('step-environment').classList.add('hidden');
+                selections.age = null; selections.env = null;
+            }
+            if (step === 'env') { selections.env = null; }
             document.getElementById('result-section').classList.add('hidden');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
 </body>
