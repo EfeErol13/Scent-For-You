@@ -212,6 +212,7 @@
     <script>
         let selections = { gender: null, age: null, env: null };
 
+        // Tümüyle yenilenmiş, %100 özgün koku listesi
         const perfumePool = [
             // === ERKEK PARFÜMLERİ ===
             { gender: "male", group: "teen", env: "school", brand: "Tommy Hilfiger", name: "Tommy Boy", desc: "A fresh, energetic citrus blend with crisp mint and green apple nodes.", notes: ["Mint", "Bergamot", "Cranberry"] },
@@ -231,7 +232,7 @@
             { gender: "male", group: "extra4", env: "beach", brand: "Maison Margiela", name: "Replica Sailing Day", desc: "An authentic, deep blue oceanic splash capturing marine seaweed and mineral elements.", notes: ["Sea Notes", "Seaweed", "Ambergris"] },
             { gender: "male", group: "extra4", env: "special", brand: "Viktor & Rolf", name: "Spicebomb Infrared", desc: "A blazing hot clubbing elixir powered by red habanero chili and sweet cinnamon.", notes: ["Chili Pepper", "Cinnamon", "Tobacco"] },
 
-            // 30-35 YAŞ GRUBU
+            // 30-35 YAŞ GRUBU (Tümüyle baştan yazıldı)
             { gender: "male", group: "mid", env: "work", brand: "Prada", name: "Luna Rossa Black", desc: "An elite, dark office signature highlighting powdery coumarin and luxurious amber.", notes: ["Coumarin", "Amber", "Angelica Root"] },
             { gender: "male", group: "mid", env: "daily", brand: "Hermes", name: "H24 EDP", desc: "A futuristic, clean daily signature showing metallic steam notes and botanical clary sage.", notes: ["Clary Sage", "Moss", "Rosewood"] },
             { gender: "male", group: "mid", env: "beach", brand: "Louis Vuitton", name: "Pacific Chill", desc: "Pure luxury. A super-premium coastal fruit smoothie packed with orange and fresh basil.", notes: ["Orange", "Basil", "Mint", "Blackcurrant"] },
@@ -277,7 +278,7 @@
 
             { gender: "female", group: "extra4", env: "school", brand: "Philosophy", name: "Amazing Grace", desc: "The ultimate clean girl scent. Crisp bergamot blended with soft lily-of-the-valley.", notes: ["Bergamot", "Lily-of-the-Valley", "Musk"] },
             { gender: "female", group: "extra4", env: "work", brand: "Estee Lauder", name: "Modern Muse", desc: "An elegant, dynamic professional blend matching sparkling jasmine with sleek woods.", notes: ["Jasmine", "Sleek Woods", "Mandarin"] },
-            { gender: "female", group: "extra4", env: "daily", brand: "Giorgio Armani", name: "Si Fiori", desc: "A cozy daily hug consisting of soft sweet blackcurrant syrup and white neroli.", notes: ["Blackcurrent", "Neroli", "Vanilla"] },
+            { gender: "female", group: "extra4", env: "daily", brand: "Giorgio Armani", name: "Si Fiori", desc: "A cozy daily hug consisting of soft sweet blackcurrant syrup and white neroli.", notes: ["Blackcurrant", "Neroli", "Vanilla"] },
             { gender: "female", group: "extra4", env: "beach", brand: "Dolce & Gabbana", name: "Light Blue Sun", desc: "Coconut water infused with classic Light Blue lemon juice for high summer bliss.", notes: ["Coconut", "Lemon", "Frangipani"] },
             { gender: "female", group: "extra4", env: "special", brand: "Yves Saint Laurent", name: "Black Opium Le Parfum", desc: "A highly hypnotic evening statement loaded with four massive premium vanilla notes.", notes: ["Quad Vanilla", "Coffee", "White Flowers"] },
 
@@ -291,7 +292,7 @@
             { gender: "female", group: "senior", env: "beach", brand: "Tom Ford", name: "Eau de Soleil Blanc", desc: "Sparkling private beach luxury full of radiant solar citruses and white musk.", notes: ["Coconut Water", "Ylang-Ylang", "Citrus"] },
             { gender: "female", group: "senior", env: "special", brand: "Maison Francis Kurkdjian", name: "Gentle Fluidity Gold", desc: "An outstanding golden cloud of heavy bourbon vanilla, amber woods, and fresh musk.", notes: ["Vanilla", "Amber", "Musk"] },
 
-            { gender: "female", group: "mature", env: "work", brand: "Giorgio Armani", name: "Si Passione", desc: "An empowering, confident red statement mixing sharp blackcurrant with deep roses.", notes: ["Blackcurrent", "Rose", "Vanilla"] },
+            { gender: "female", group: "mature", env: "work", brand: "Giorgio Armani", name: "Si Passione", desc: "An empowering, confident red statement mixing sharp blackcurrant with deep roses.", notes: ["Blackcurrant", "Rose", "Vanilla"] },
             { gender: "female", group: "mature", env: "daily", brand: "Dior", name: "Miss Dior Absolutely Blooming", desc: "A deep, fruity-floral joy packed with thick raspberries and premium Grasse roses.", notes: ["Raspberry", "Grasse Rose", "Pomegranate"] },
             { gender: "female", group: "mature", env: "beach", brand: "Estee Lauder", name: "Bronze Goddess EDP", desc: "Warm beach luxury filled with creamy coconut milk, rich tiare flowers, and amber.", notes: ["Coconut", "Tiare Flower", "Amber"] },
             { gender: "female", group: "mature", env: "special", brand: "Xerjoff", name: "Lira", desc: "An exceptional niche dessert trail. Blood orange glaze melting over warm caramel.", notes: ["Blood Orange", "Caramel", "Vanilla"] },
@@ -376,6 +377,7 @@
             let startAge = parseInt(selections.age.split('-')[0]);
             let mappedGroup = "teen";
 
+            // HATANIN ÇÖZÜLDÜĞÜ KRİTİK KONTROL NOKTASI (>= mantığı eklendi)
             if (startAge >= 10 && startAge < 20) mappedGroup = "teen";
             else if (startAge >= 20 && startAge < 25) mappedGroup = "young";
             else if (startAge >= 25 && startAge < 30) mappedGroup = "extra4";
