@@ -245,16 +245,16 @@
             { gender: "male", group: "young", env: "beach", brand: "Hollister", name: "Wave For Him", desc: "Relaxed California surf style capturing salty bamboo leaves and fresh yuzu fruit.", notes: ["Yuzu", "Bamboo Leaf", "Driftwood"] },
             { gender: "male", group: "young", env: "special", brand: "Paco Rabanne", name: "Invictus", desc: "A powerhouse champion scent combining metallic sea notes with sweet, juicy grapefruit.", notes: ["Sea Notes", "Grapefruit", "Bay Leaf"] },
             
-            // extra4 (25-30 için - EKSİK OLAN WORK ORTAMI EKLENDİ)
-            { gender: "male", group: "extra4", env: "school", brand: "YSL", name: "Y EDP", desc: "Clean, ultra-modern, and dynamic blend of sharp apple and refined sage.", notes: ["Apple", "Sage", "Amberwood"] },
+            // extra4 (25-30 için)
+            { gender: "male", group: "extra4", env: "school", brand: "Armani", name: "Acqua Di Gio EDT", desc: "A legendary, crisp marine freshness layered with dynamic light citruses. A true timeless classic.", notes: ["Marine Notes", "Lime", "Bergamot"] },
             { gender: "male", group: "extra4", env: "work", brand: "Hugo Boss", name: "Boss Bottled Marine", desc: "A fresh corporate blend with crisp apple and warm cinnamon notes, optimized for dynamic office hours.", notes: ["Apple", "Cinnamon", "Marine Notes"] },
             { gender: "male", group: "extra4", env: "daily", brand: "Dior", name: "Sauvage EDT", desc: "A raw, charismatic combination of crisp Calabrian bergamot and fiery pepper.", notes: ["Bergamot", "Sichuan Pepper", "Ambroxan"] },
             { gender: "male", group: "extra4", env: "beach", brand: "Kenzo", name: "Homme Intense", desc: "A magnificent tropical woody vibe layered with fresh sea salt and creamy fig pulp.", notes: ["Sea Salt", "Fig Tree", "Sandalwood"] },
             { gender: "male", group: "extra4", env: "special", brand: "Afnan", name: "9pm", desc: "An ultra-popular, long-lasting party specialist featuring juicy pear and sweet black vanilla.", notes: ["Pear", "Lavender", "Vanilla"] },
 
-            // mid (30-35 için)
+            // mid (30-35 için - GÜNLÜK SEÇENEK DEĞİŞTİ)
             { gender: "male", group: "mid", env: "work", brand: "Montblanc", name: "Explorer", desc: "A highly sophisticated business aroma displaying fresh bergamot and smooth premium leather.", notes: ["Bergamot", "Leather", "Patchouli"] },
-            { gender: "male", group: "mid", env: "daily", brand: "Bleu de Chanel EDT", desc: "A universally loved masterpiece of fresh, zesty mint blended with rich, elegant incense.", notes: ["Grapefruit", "Mint", "Incense", "Cedar"] },
+            { gender: "male", group: "mid", env: "daily", brand: "Yves Saint Laurent", name: "Y EDP", desc: "An incredibly sophisticated, modern daily fragrance. A crystal-clean blend of sharp green apple and fresh aromatic sage.", notes: ["Apple", "Sage", "Ginger", "Amberwood"] },
             { gender: "male", group: "mid", env: "beach", brand: "Armani", name: "Acqua Di Gio Profondo", desc: "Deep ocean water energy infused with green mandarin and aromatic rosemary accents.", notes: ["Marine Notes", "Green Mandarin", "Mineral Accords"] },
             { gender: "male", group: "mid", env: "special", brand: "Xerjoff", name: "Naxos", desc: "Pure prestige. An incredibly smooth and rich fusion of sweet honey, tobacco leaf, and lavender.", notes: ["Honey", "Tobacco Leaf", "Vanilla"] },
             
@@ -302,7 +302,7 @@
             { gender: "female", group: "young", env: "beach", brand: "Sol de Janeiro", name: "Cheirosa 68", desc: "A tropical, breezy pink paradise packed with exotic dragon fruit and airy sweet cotton candy.", notes: ["Dragon Fruit", "Vanilla", "Cotton Candy"] },
             { gender: "female", group: "young", env: "special", brand: "Burberry", name: "Her Intense", desc: "A deeply rich, heavy dark berry jam vibe mixed with sophisticated benzoin resin.", notes: ["Blackberry", "Cherry", "Benzoin"] },
             
-            // extra4 (25-30 için - EKSİK OLAN WORK ORTAMI EKLENDİ)
+            // extra4 (25-30 için)
             { gender: "female", group: "extra4", env: "school", brand: "Chanel", name: "Chance Eau Tendre", desc: "An effortlessly elegant and crisp mixture of fresh quince fruit and powdery white jasmine.", notes: ["Quince", "Grapefruit", "Jasmine"] },
             { gender: "female", group: "extra4", env: "work", brand: "Prada", name: "La Femme Prada", desc: "A beautifully sophisticated corporate choice emphasizing clean frangipani flowers and smooth beeswax.", notes: ["Frangipani", "Beeswax", "Tuberose"] },
             { gender: "female", group: "extra4", env: "daily", brand: "Ariana Grande", name: "Cloud", desc: "A delightfully airy and cozy cloud of whipped cream, sweet praline, and coconut.", notes: ["Whipped Cream", "Coconut", "Praline"] },
@@ -429,7 +429,6 @@
             let startAge = parseInt(selections.age.split('-')[0]);
             let mappedGroup = "teen";
 
-            // Yaş butonlarının havuzlara kusursuz dağılımı
             if (startAge >= 10 && startAge < 20) mappedGroup = "teen";
             else if (startAge >= 20 && startAge < 25) mappedGroup = "young";
             else if (startAge >= 25 && startAge < 30) mappedGroup = "extra4";
@@ -440,15 +439,12 @@
             else if (startAge >= 50 && startAge < 60) mappedGroup = "extra2";
             else if (startAge >= 60) mappedGroup = "extra3";
 
-            // BİRİNCİL ARAMA: Tam eşleşmeyi ara
             let match = perfumePool.find(p => p.gender === selections.gender && p.group === mappedGroup && p.env === selections.env);
 
-            // GÜVENLİK KALKANI (FALLBACK): Eğer tam eşleşen koku bulunamazsa (Asla undefined basılmaması için)
             if (!match) {
                 match = perfumePool.find(p => p.gender === selections.gender && p.env === selections.env);
             }
 
-            // Eğer mucizevi bir şekilde o ortamda hiçbir şey yoksa (Sistem çökmesin diye son filtre)
             if (!match) {
                 match = perfumePool.find(p => p.gender === selections.gender);
             }
