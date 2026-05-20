@@ -228,59 +228,60 @@
     <script>
         let selections = { gender: null, age: null, env: null };
 
+        // TAMAMI BENZERSİZ VE ASLA TEKRAR ETMEYEN REÇETE VERİTABANI
         const database = {
             male: {
-                young: {
-                    school: [{ brand: "Zara", name: "Seoul", desc: "Light, fresh, tangerine and marine notes. Perfect for daily school life.", notes: ["Marine Notes", "Tangerine", "Amber"] }],
-                    daily: [{ brand: "Nautica", name: "Voyage", desc: "Legendary budget-friendly summer freshness featuring green apple.", notes: ["Green Apple", "Water Lily", "Cedarwood"] }],
-                    beach: [{ brand: "Zara", name: "Lisboa", desc: "Zesty lemon breeze, ideal for cooling down at the beach.", notes: ["Lemon", "Jasmine", "Cedarwood"] }],
-                    special: [{ brand: "Versace", name: "Eros EDT", desc: "Energetic mint-apple vibe that stands out beautifully in any crowd.", notes: ["Mint", "Green Apple", "Vanilla"] }]
+                young: { // 10-20
+                    school: [{ brand: "Zara", name: "Seoul", desc: "A vibrant, airy combination of tangerine and smooth marine accords. Perfect for active school days.", notes: ["Marine Notes", "Tangerine", "Amber"] }],
+                    daily: [{ brand: "Nautica", name: "Voyage", desc: "A fresh burst of crunchy green apple and cool lotus. Famous for its casual summer charm.", notes: ["Green Apple", "Water Lily", "Cedarwood"] }],
+                    beach: [{ brand: "Zara", name: "Lisboa", desc: "Sparkling lemon juice and clean jasmine notes, bringing a cool breeze on a blazing hot day.", notes: ["Lemon", "Jasmine", "Musk"] }],
+                    special: [{ brand: "Versace", name: "Eros EDT", desc: "A highly hypnotic mix of fresh mint, green apple, and rich Madagascar vanilla.", notes: ["Mint", "Green Apple", "Vanilla"] }]
                 },
-                college: {
-                    school: [{ brand: "YSL", name: "Y EDP", desc: "Modern, clean, apple and woody notes. Lasts all day in lecture halls.", notes: ["Apple", "Sage", "Cedarwood"] }],
-                    work: [{ brand: "Prada", name: "L'Homme", desc: "The ultimate clean office scent. Luxurious soapy freshness with elegant iris.", notes: ["Iris", "Neroli", "Amber"] }],
-                    daily: [{ brand: "Dior", name: "Sauvage EDT", desc: "Intense bergamot and pepper combo. A wildly popular signature daily scent.", notes: ["Calabrian Bergamot", "Sichuan Pepper", "Ambroxan"] }],
-                    beach: [{ brand: "Kenzo", name: "Homme Intense", desc: "Sea salt and fig tree notes, offering a tropical woody summer vibe.", notes: ["Sea Salt", "Fig", "Sandalwood"] }],
-                    special: [{ brand: "Xerjoff", name: "Naxos", desc: "Perfect harmony of honey, tobacco, and vanilla. Outstanding premium performance.", notes: ["Honey", "Tobacco Leaf", "Vanilla"] }]
+                college: { // 20-25
+                    school: [{ brand: "YSL", name: "Y EDP", desc: "Clean, ultra-modern, and dynamic blend of sharp apple and refined sage. Lasts all day in college halls.", notes: ["Apple", "Sage", "Amberwood"] }],
+                    work: [{ brand: "Prada", name: "L'Homme", desc: "The ultimate standard of neatness. Luxurious soapy freshness with elegant powdery iris.", notes: ["Iris", "Neroli", "Amber"] }],
+                    daily: [{ brand: "Dior", name: "Sauvage EDT", desc: "A raw, charismatic combination of crisp Calabrian bergamot and fiery Sichuan pepper.", notes: ["Bergamot", "Sichuan Pepper", "Ambroxan"] }],
+                    beach: [{ brand: "Kenzo", name: "Homme Intense", desc: "A magnificent tropical woody vibe layered with fresh sea salt and creamy fig pulp.", notes: ["Sea Salt", "Fig Tree", "Sandalwood"] }],
+                    special: [{ brand: "Afnan", name: "9pm", desc: "An ultra-popular, long-lasting party specialist featuring juicy pear and sweet black vanilla.", notes: ["Pear", "Lavender", "Vanilla"] }]
                 },
-                adult: {
-                    work: [{ brand: "Terre d'Hermes", name: "Hermes EDT", desc: "Earthy flint and bitter orange, highly praised in professional business life.", notes: ["Orange", "Flint", "Cedar", "Vetiver"] }],
-                    daily: [{ brand: "Creed", name: "Aventus", desc: "Legendary blend of rich pineapple and smoky birch notes. Absolute daily luxury.", notes: ["Pineapple", "Birch", "Musk"] }],
-                    beach: [{ brand: "Armani", name: "Acqua Di Gio Parfum", desc: "Deep marine essence with a touch of rich incense, fantastic for coastal sunsets.", notes: ["Marine Notes", "Rosemary", "Incense"] }],
-                    special: [{ brand: "Tom Ford", name: "Noir Extreme", desc: "Seductive cardamom and exotic kulfi ice cream notes. Great for date nights.", notes: ["Kulfi", "Cardamom", "Vanilla"] }]
+                adult: { // 25-50
+                    work: [{ brand: "Montblanc", name: "Explorer", desc: "A highly sophisticated business aroma displaying fresh bergamot and smooth premium leather.", notes: ["Bergamot", "Leather", "Patchouli"] }],
+                    daily: [{ brand: "Creed", name: "Aventus", desc: "The unrivaled king of luxury. A stellar contrast of rich pineapple and deep, smoky birch woods.", notes: ["Pineapple", "Birch", "Patchouli", "Musk"] }],
+                    beach: [{ brand: "Armani", name: "Acqua Di Gio Profondo", desc: "Deep ocean water energy infused with green mandarin and aromatic rosemary accents.", notes: ["Marine Notes", "Green Mandarin", "Mineral Accords"] }],
+                    special: [{ brand: "Xerjoff", name: "Naxos", desc: "Pure prestige. An incredibly smooth and rich fusion of sweet honey, tobacco leaf, and lavender.", notes: ["Honey", "Tobacco Leaf", "Vanilla", "Lavender"] }]
                 },
-                mature: {
-                    work: [{ brand: "Chanel", name: "Bleu de Chanel Parfum", desc: "Deep, rich, majestic woody trail layered with smooth sandalwood for supreme status.", notes: ["Sandalwood", "Citrus", "Cedar"] }],
-                    daily: [{ brand: "Guerlain", name: "Vetiver", desc: "The gold standard of masculine elegance. Fresh, earthy, clean, and completely timeless.", notes: ["Vetiver", "Tobacco", "Bergamot"] }],
-                    beach: [{ brand: "Tom Ford", name: "Costa Azzurra", desc: "A luxurious coastal escape blending salty sea air with rich, aromatic evergreen oaks.", notes: ["Driftwood", "Sea Salt", "Oud"] }],
-                    special: [{ brand: "Roja Parfums", name: "Elysium Pour Homme", desc: "Ultra-premium, sophisticated elite blend of fresh citruses, ambergris, and leathery tones.", notes: ["Grapefruit", "Ambergris", "Leather"] }]
+                mature: { // 50-90
+                    work: [{ brand: "Terre d'Hermes", name: "Hermes EDT", desc: "A masterful corporate signature blending earthy flint stones with bitter orange peels.", notes: ["Orange", "Flint", "Vetiver", "Cedar"] }],
+                    daily: [{ brand: "Guerlain", name: "Vetiver", desc: "The absolute standard of traditional masculine refinement. Crisp, woody, and entirely timeless.", notes: ["Vetiver", "Tobacco", "Bergamot", "Neroli"] }],
+                    beach: [{ brand: "Tom Ford", name: "Costa Azzurra", desc: "An elite coastal escape that artfully captures salty sea air mixed with aromatic evergreen oaks.", notes: ["Driftwood", "Sea Salt", "Oud", "Cypress"] }],
+                    special: [{ brand: "Roja Parfums", name: "Elysium Pour Homme", desc: "An ultra-premium masterpiece featuring sparkling grapefruit, deep ambergris, and soft leather.", notes: ["Grapefruit", "Ambergris", "Leather", "Lime"] }]
                 }
             },
             female: {
-                young: {
-                    school: [{ brand: "Zara", name: "Wonder Rose", desc: "Joyful, sweet pear and red berry blend that fits nicely into school hours.", notes: ["Pear", "Red Berries", "Vanilla"] }],
-                    daily: [{ brand: "Zara", name: "Orchid", desc: "Fresh orchid and blackcurrant notes, providing a clean, airy feel.", notes: ["Orchid", "Bergamot", "Blackcurrant"] }],
-                    beach: [{ brand: "Zara", name: "Femme", desc: "Peony and vanilla blend with soft, powdery sunscreen undertones.", notes: ["Peony", "Vanilla", "Musk"] }],
-                    special: [{ brand: "Aquolina", name: "Pink Sugar", desc: "Playful cotton candy and caramel theme, highly cheerful youth fragrance.", notes: ["Cotton Candy", "Caramel", "Strawberry"] }]
+                young: { // 10-20
+                    school: [{ brand: "Zara", name: "Wonder Rose", desc: "A joyful, uplifting blend of sweet pear, red berries, and delicate vanilla sugar.", notes: ["Pear", "Red Berries", "Vanilla"] }],
+                    daily: [{ brand: "Zara", name: "Orchid", desc: "Fresh floral orchid petals grounded with bergamot for a beautiful post-shower clean vibe.", notes: ["Orchid", "Bergamot", "Red Currant"] }],
+                    beach: [{ brand: "Zara", name: "Femme", desc: "A gentle peony and warm vanilla blend that gives off a cozy, sun-kissed sunscreen undertone.", notes: ["Peony", "Vanilla", "White Musk"] }],
+                    special: [{ brand: "Aquolina", name: "Pink Sugar", desc: "A wildly playful and nostalgic gourmand universe packed with spun cotton candy and caramel.", notes: ["Cotton Candy", "Caramel", "Strawberry"] }]
                 },
-                college: {
-                    school: [{ brand: "Chanel", name: "Chance Eau Tendre", desc: "High-class, crisp, and sophisticated quince and jasmine for university women.", notes: ["Quince", "Grapefruit", "Jasmine"] }],
-                    work: [{ brand: "Lancome", name: "Idole", desc: "Spotless clean rose and white musk. Very bright and professional for office wear.", notes: ["Rose", "Pear", "White Musk"] }],
-                    daily: [{ brand: "Ariana Grande", name: "Cloud", desc: "Soft, whipped cream and coconut notes. A highly viral and cozy everyday scent.", notes: ["Whipped Cream", "Coconut", "Praline"] }],
-                    beach: [{ brand: "Sol de Janeiro", name: "Cheirosa 62", desc: "Pistachio and salted caramel perfection, radiating warm beach energy.", notes: ["Pistachio", "Salted Caramel", "Vanilla"] }],
-                    special: [{ brand: "Carolina Herrera", name: "Good Girl", desc: "Iconic stiletto bottle featuring rich cocoa and coffee. Captivating night-out choice.", notes: ["Almond", "Coffee", "Cocoa"] }]
+                college: { // 20-25
+                    school: [{ brand: "Chanel", name: "Chance Eau Tendre", desc: "An effortlessly elegant and crisp mixture of fresh quince fruit and powdery white jasmine blossoms.", notes: ["Quince", "Grapefruit", "Jasmine"] }],
+                    work: [{ brand: "Lancome", name: "Idole", desc: "A flawless, crystal-clean presentation of morning roses layered over soft radiant white musk.", notes: ["Rose", "Pear", "White Musk"] }],
+                    daily: [{ brand: "Ariana Grande", name: "Cloud", desc: "A delightfully airy and cozy cloud of whipped cream, sweet praline, and tropical coconut husk.", notes: ["Whipped Cream", "Coconut", "Praline"] }],
+                    beach: [{ brand: "Sol de Janeiro", name: "Cheirosa 62", desc: "Irresistible Brazilian beach energy featuring warm toasted pistachio and luscious salted caramel.", notes: ["Pistachio", "Salted Caramel", "Vanilla"] }],
+                    special: [{ brand: "Carolina Herrera", name: "Good Girl", desc: "A deeply seductive, dark evening fragrance celebrating roasted coffee beans, cocoa, and sweet almond.", notes: ["Almond", "Coffee", "Cocoa", "Tuberose"] }]
                 },
-                adult: {
-                    work: [{ brand: "Narciso Rodriguez", name: "For Her Pure Musc", desc: "Noble musk that exudes modern corporate confidence and empowerment.", notes: ["Musk", "White Flowers", "Cashmeran"] }],
-                    daily: [{ brand: "Chanel", name: "Coco Mademoiselle", desc: "Timeless orange and rich patchouli blend. Highly elegant and wealthy aura.", notes: ["Orange", "Patchouli", "Turkish Rose"] }],
-                    beach: [{ brand: "Estee Lauder", name: "Bronze Goddess", desc: "A luxury beach classic filled with rich coconut, tiare flower, and glowing warmth.", notes: ["Coconut", "Tiare Flower", "Amber"] }],
-                    special: [{ brand: "Parfums de Marly", name: "Delina", desc: "The queen of niche. Heavenly Turkish rose mixed with exotic lychee and rhubarb.", notes: ["Turkish Rose", "Lychee", "Rhabarb", "Vanilla"] }]
+                adult: { // 25-50
+                    work: [{ brand: "Narciso Rodriguez", name: "For Her Pure Musc", desc: "An incredibly noble, clean musk that beautifully communicates modern business confidence and poise.", notes: ["Musk", "White Flowers", "Cashmeran"] }],
+                    daily: [{ brand: "Chanel", name: "Coco Mademoiselle", desc: "A timeless, wealthy aura created by a luxurious harmony of bright orange and rich patchouli.", notes: ["Orange", "Patchouli", "Turkish Rose"] }],
+                    beach: [{ brand: "Estee Lauder", name: "Bronze Goddess", desc: "A luxury resort masterpiece filled with creamy coconut milk, tiare flower, and golden amber warmth.", notes: ["Coconut", "Tiare Flower", "Amber", "Vanilla"] }],
+                    special: [{ brand: "Parfums de Marly", name: "Delina", desc: "The ultimate queen of modern niche. Heavenly Turkish rose petals mixed with exotic lychee fruit.", notes: ["Turkish Rose", "Lychee", "Rhubarb", "Vanilla"] }]
                 },
-                mature: {
-                    work: [{ brand: "Dior", name: "J'adore EDP", desc: "A glorious, majestic bouquet of ylang-ylang, rose, and jasmine. Pure classic grace.", notes: ["Ylang-Ylang", "Damask Rose", "Jasmine"] }],
-                    daily: [{ brand: "Hermes", name: "Eau des Merveilles", desc: "An enchanting, warm woody-amber scent without dominant flowers. Pure poetic luxury.", notes: ["Ambergris", "Elemi Resin", "Orange"] }],
-                    beach: [{ brand: "Tom Ford", name: "Soleil Blanc", desc: "Luxe coco de mer and sultry ylang-ylang. Exudes high-end resort private island vibe.", notes: ["Coconut", "Ylang-Ylang", "Cardamom"] }],
-                    special: [{ brand: "Maison Francis Kurkdjian", name: "Baccarat Rouge 540", desc: "Exquisite saffron and amberwood. A historic luxury scent that commands total respect.", notes: ["Saffron", "Jasmine", "Amberwood"] }]
+                mature: { // 50-90
+                    work: [{ brand: "Dior", name: "J'adore EDP", desc: "A glorious, majestic golden bouquet of exotic ylang-ylang, damask rose, and noble jasmine.", notes: ["Ylang-Ylang", "Damask Rose", "Jasmine"] }],
+                    daily: [{ brand: "Hermes", name: "Eau des Merveilles", desc: "An enchanting, warm woody-amber whisper without dominant flowers. Captures pure artistic luxury.", notes: ["Ambergris", "Orange", "Elemi Resin", "Fir"] }],
+                    beach: [{ brand: "Tom Ford", name: "Soleil Blanc", desc: "High-end private island opulence blending sultry coco de mer with solar ylang-ylang notes.", notes: ["Coconut", "Ylang-Ylang", "Cardamom", "Amber"] }],
+                    special: [{ brand: "Maison Francis Kurkdjian", name: "Baccarat Rouge 540", desc: "A legendary, historic masterpiece showcasing sophisticated saffron threads and warm amberwood.", notes: ["Saffron", "Jasmine", "Amberwood", "Cedar"] }]
                 }
             }
         };
