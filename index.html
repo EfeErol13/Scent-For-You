@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scent For You - New Generation</title>
+    <title>Scent Studio - Ultimate Edition</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
             --primary: #111111;
-            --accent: #c5a880;
+            --accent: #bda370;
             --bg: #fafafa;
             --card-bg: #ffffff;
             --text: #222222;
@@ -18,7 +18,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: '-apple-system', sans-serif;
         }
 
         body {
@@ -29,93 +29,78 @@
         }
 
         .container {
-            max-width: 850px;
+            max-width: 800px;
             margin: 40px auto;
             background: var(--card-bg);
             padding: 40px;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.03);
-            border: 1px solid rgba(0,0,0,0.02);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         h1 {
             text-align: center;
             font-weight: 300;
-            letter-spacing: 3px;
-            margin-bottom: 40px;
-            color: var(--primary);
+            letter-spacing: 2px;
+            margin-bottom: 30px;
             text-transform: uppercase;
         }
 
         h1 span {
             color: var(--accent);
-            font-weight: 700;
+            font-weight: 600;
         }
 
         .step-title {
-            font-size: 1rem;
-            margin-bottom: 20px;
-            color: #777;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #666;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-weight: 600;
+            gap: 10px;
         }
 
         .options-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            margin-bottom: 35px;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 12px;
+            margin-bottom: 30px;
         }
 
         .option-btn {
-            background: #ffffff;
-            border: 1px solid #e5e5e5;
-            padding: 18px 12px;
-            border-radius: 16px;
+            background: #fff;
+            border: 2px solid #eee;
+            padding: 15px 10px;
+            border-radius: 12px;
             cursor: pointer;
             text-align: center;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 0.95rem;
             font-weight: 500;
-            color: var(--text);
+            transition: all 0.2s ease;
         }
 
         .option-btn i {
             display: block;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: #bbbbbb;
-            transition: color 0.25s ease;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            color: #ccc;
         }
 
         .option-btn:hover {
             border-color: var(--accent);
-            background-color: #fdfbf7;
-            transform: translateY(-2px);
         }
 
         .option-btn.active {
             border-color: var(--primary);
             background: var(--primary);
-            color: #ffffff;
-        }
-
-        .option-btn.active i {
-            color: var(--accent);
+            color: #fff;
         }
 
         .option-btn.active.female-active {
             border-color: #cca4b4;
             background: #3a2d34;
-            color: #ffffff;
-        }
-        
-        .option-btn.active.female-active i {
-            color: #cca4b4;
+            color: #fff;
         }
 
         .hidden {
@@ -123,67 +108,52 @@
         }
 
         #result-section {
-            margin-top: 45px;
-            padding-top: 35px;
-            border-top: 2px dashed #eeeeee;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px dashed #eee;
         }
 
         .perfume-card {
-            background: #ffffff;
-            border: 1px solid #eaeaea;
-            border-left: 6px solid var(--accent);
-            padding: 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.01);
-            animation: fadeIn 0.4s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            background: #fff;
+            border: 1px solid #eee;
+            border-left: 5px solid var(--accent);
+            padding: 25px;
+            border-radius: 12px;
         }
 
         .perfume-brand {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
             color: var(--accent);
-            font-weight: 700;
-            margin-bottom: 4px;
+            font-weight: 600;
         }
 
         .perfume-name {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 12px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 5px 0 10px 0;
         }
 
         .perfume-desc {
-            color: #555555;
-            font-size: 1rem;
-            margin-bottom: 20px;
-            font-weight: 400;
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
         }
 
         .perfume-notes {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
         .note-tag {
-            background: #f4f4f4;
-            padding: 6px 14px;
-            border-radius: 30px;
+            background: #f0f0f0;
+            padding: 4px 10px;
+            border-radius: 20px;
             font-size: 0.8rem;
-            color: #444444;
-            font-weight: 500;
-            border: 1px solid #eaeaea;
         }
 
         @media (max-width: 600px) {
-            .container { padding: 25px; margin: 15px auto; }
             .options-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
@@ -194,302 +164,255 @@
         <h1>Scent <span>Studio</span></h1>
 
         <div id="step-gender">
-            <div class="step-title"><i class="fa-solid fa-user-astronaut"></i> 1. Choose Target Profile</div>
+            <div class="step-title"><i class="fa-solid fa-venus-mars"></i> Select Gender</div>
             <div class="options-grid" style="grid-template-columns: 1fr 1fr;">
-                <button class="option-btn" onclick="handleGender('male', this)">
-                    <i class="fa-solid fa-mars-stroke"></i>Gents
+                <button class="option-btn" onclick="selectGender('male', this)">
+                    <i class="fa-solid fa-mars"></i>Male
                 </button>
-                <button class="option-btn" onclick="handleGender('female', this)">
-                    <i class="fa-solid fa-venus-stroke"></i>Ladies
+                <button class="option-btn" onclick="selectGender('female', this)">
+                    <i class="fa-solid fa-venus"></i>Female
                 </button>
             </div>
         </div>
 
         <div id="step-age" class="hidden">
-            <div class="step-title"><i class="fa-solid fa-hourglass-half"></i> 2. Select Age Generation</div>
+            <div class="step-title"><i class="fa-solid fa-cake-candles"></i> Select Age Range</div>
             <div class="options-grid">
-                <button class="option-btn" onclick="handleAge('10-15', this)">10-15</button>
-                <button class="option-btn" onclick="handleAge('15-20', this)">15-20</button>
-                <button class="option-btn" onclick="handleAge('20-25', this)">20-25</button>
-                <button class="option-btn" onclick="handleAge('25-30', this)">25-30</button>
-                <button class="option-btn" onclick="handleAge('30-35', this)">30-35</button>
-                <button class="option-btn" onclick="handleAge('35-40', this)">35-40</button>
-                <button class="option-btn" onclick="handleAge('40-45', this)">40-45</button>
-                <button class="option-btn" onclick="handleAge('45-50', this)">45-50</button>
-                <button class="option-btn" onclick="handleAge('50-55', this)">50-55</button>
-                <button class="option-btn" onclick="handleAge('55-60', this)">55-60</button>
-                <button class="option-btn" onclick="handleAge('60-65', this)">60-65</button>
-                <button class="option-btn" onclick="handleAge('65-70', this)">65-70</button>
-                <button class="option-btn" onclick="handleAge('70-75', this)">70-75</button>
-                <button class="option-btn" onclick="handleAge('75-80', this)">75-80</button>
-                <button class="option-btn" onclick="handleAge('80-85', this)">80-85</button>
-                <button class="option-btn" onclick="handleAge('85-90', this)">85-90</button>
+                <button class="option-btn" onclick="selectAge('10-15', this)">10-15</button>
+                <button class="option-btn" onclick="selectAge('15-20', this)">15-20</button>
+                <button class="option-btn" onclick="selectAge('20-25', this)">20-25</button>
+                <button class="option-btn" onclick="selectAge('25-30', this)">25-30</button>
+                <button class="option-btn" onclick="selectAge('30-35', this)">30-35</button>
+                <button class="option-btn" onclick="selectAge('35-40', this)">35-40</button>
+                <button class="option-btn" onclick="selectAge('40-45', this)">40-45</button>
+                <button class="option-btn" onclick="selectAge('45-50', this)">45-50</button>
+                <button class="option-btn" onclick="selectAge('50-55', this)">50-55</button>
+                <button class="option-btn" onclick="selectAge('55-60', this)">55-60</button>
+                <button class="option-btn" onclick="selectAge('60-65', this)">60-65</button>
+                <button class="option-btn" onclick="selectAge('65-70', this)">65-70</button>
+                <button class="option-btn" onclick="selectAge('70-75', this)">70-75</button>
+                <button class="option-btn" onclick="selectAge('75-80', this)">75-80</button>
+                <button class="option-btn" onclick="selectAge('80-85', this)">80-85</button>
+                <button class="option-btn" onclick="selectAge('85-90', this)">85-90</button>
             </div>
         </div>
 
         <div id="step-environment" class="hidden">
-            <div class="step-title"><i class="fa-solid fa-masks-theater"></i> 3. Current Atmosphere</div>
-            <div class="options-grid" id="env-buttons-dynamic">
+            <div class="step-title"><i class="fa-solid fa-compass"></i> Select Atmosphere</div>
+            <div class="options-grid" id="env-container">
                 </div>
         </div>
 
         <div id="result-section" class="hidden">
-            <div class="step-title" style="color: var(--primary);"><i class="fa-solid fa-gem"></i> Custom Formulation</div>
-            <div id="perfume-results-card"></div>
+            <div class="step-title" style="color: var(--primary);"><i class="fa-solid fa-wand-magic-sparkles"></i> Recommendation</div>
+            <div id="perfume-result-target"></div>
         </div>
     </div>
 
     <script>
-        // Önbellek sorunlarını önlemek için tamamen temiz bir state objesi
-        let globalState = { gender: null, age: null, environment: null };
+        let selections = { gender: null, age: null, env: null };
 
-        // === %100 YENİLENMİŞ, HER YAŞ İÇİN BENZERSİZ VE BAĞIMSIZ PARFÜM SİSTEMİ ===
-        const MasterDatabase = [
-            // ==================== MALE FRAGRANCES ====================
-            // teen (10-15 & 15-20)
-            { gender: "male", group: "teen", env: "school", brand: "Abercrombie & Fitch", name: "First Instinct", desc: "A fresh, safe, and youthfully energetic mixture of sweet melon and clean crushed ice.", notes: ["Melon", "Gin Tonic", "Suede"] },
-            { gender: "male", group: "teen", env: "daily", brand: "Lacoste", name: "Essential", desc: "Crisp tomato leaf blended with bright citrus notes, providing an all-day active feel.", notes: ["Tomato Leaf", "Tangerine", "Sandalwood"] },
-            { gender: "male", group: "teen", env: "beach", brand: "Davidoff", name: "Cool Water EDT", desc: "The ultimate blue classic. Crisp sea water splash accompanied by fresh garden mint roots.", notes: ["Sea Water", "Mint", "Lavender"] },
-            { gender: "male", group: "teen", env: "special", brand: "Calvin Klein", name: "CK One Shock", desc: "A modern, warm, and spicy composition highlighting energy drinks and dark tobacco.", notes: ["Energy Accord", "Cardamom", "Tobacco"] },
+        // Tümüyle yenilenmiş, %100 özgün koku listesi
+        const perfumePool = [
+            // === ERKEK PARFÜMLERİ ===
+            { gender: "male", group: "teen", env: "school", brand: "Tommy Hilfiger", name: "Tommy Boy", desc: "A fresh, energetic citrus blend with crisp mint and green apple nodes.", notes: ["Mint", "Bergamot", "Cranberry"] },
+            { gender: "male", group: "teen", env: "daily", brand: "Calvin Klein", name: "CK One", desc: "The legendary clean, light, and airy green tea scent tailored for daily activities.", notes: ["Green Tea", "Lemon", "Musk"] },
+            { gender: "male", group: "teen", env: "beach", brand: "Hollister", name: "Free Wave", desc: "Salted lime juice mixed with fresh ginger roots, providing ultimate beach comfort.", notes: ["Lime", "Ginger", "Driftwood"] },
+            { gender: "male", group: "teen", env: "special", brand: "Zara", name: "Night Pour Homme II", desc: "A modern, sweet oriental scent with aromatic lavender and soft amber.", notes: ["Lavender", "Amber", "Bergamot"] },
 
-            // young (20-25)
-            { gender: "male", group: "young", env: "school", brand: "Montblanc", name: "Legend Spirit", desc: "A highly compliments-heavy casual vibe based on icy white moss and sharp grapefruit.", notes: ["Grapefruit", "Aquatic Notes", "White Musk"] },
-            { gender: "male", group: "young", env: "work", brand: "Prada", name: "Luna Rossa Ocean", desc: "Sophisticated corporate neatness showing powdery blue iris roots and fresh bergamot.", notes: ["Blue Iris", "Bergamot", "Vetiver"] },
-            { gender: "male", group: "young", env: "daily", brand: "Carolina Herrera", name: "Bad Boy Cobalt", desc: "Electrifying daily choice balancing dark juicy plums with earthy mineral oak wood.", notes: ["Plum", "Geranium", "Truffle"] },
-            { gender: "male", group: "young", env: "beach", brand: "Paco Rabanne", name: "Invictus Platinum", desc: "An intensely refreshing coastal blast led by frozen mint leaves and bitter grapefruit shell.", notes: ["Mint", "Grapefruit", "Cypress"] },
-            { gender: "male", group: "young", env: "special", brand: "Jean Paul Gaultier", name: "Ultra Male", desc: "The supreme clubbing masterwork featuring sweet pear syrup and black vanilla pod juice.", notes: ["Pear", "Black Vanilla", "Cinnamon"] },
+            { gender: "male", group: "young", env: "school", brand: "Montblanc", name: "Starwalker", desc: "Crisp bamboo shoots layered with smooth white musk, clean and unobtrusive.", notes: ["Bamboo", "White Musk", "Cedar"] },
+            { gender: "male", group: "young", env: "work", brand: "Karl Lagerfeld", name: "Bois de Vetiver", desc: "A neat, fresh corporate setup emphasizing clean vetiver leaves and fresh mint.", notes: ["Vetiver", "Mint", "Blood Orange"] },
+            { gender: "male", group: "young", env: "daily", brand: "Coach", name: "Blue", desc: "An invigorating daily marine composition with lime juice and black pepper accents.", notes: ["Lime", "Ozone Notes", "Cedarwood"] },
+            { gender: "male", group: "young", env: "beach", brand: "Davidoff", name: "Cool Water Intense", desc: "A boosted coconut water breeze mixed with rich amber, built for long beach days.", notes: ["Coconut Water", "Amber", "Mandarin"] },
+            { gender: "male", group: "young", env: "special", brand: "Versace", name: "Eros Flame", desc: "A fiery evening champion featuring bitter chinotto orange and heavy vanilla bean.", notes: ["Chinotto", "Black Pepper", "Vanilla"] },
 
-            // extra4 (25-30)
-            { gender: "male", group: "extra4", env: "school", brand: "Coach", name: "For Men", desc: "A vibrant, optimistic modern blend combining fresh nashi pear with rich coriander spice.", notes: ["Nashi Pear", "Cardamom", "Vetiver"] },
-            { gender: "male", group: "extra4", env: "work", brand: "Burberry", name: "Hero EDT", desc: "A striking corporate signature built on sparkling bergamot and a trio of deep cedarwoods.", notes: ["Bergamot", "Juniper", "Cedarwood Trio"] },
-            { gender: "male", group: "extra4", env: "daily", brand: "Giorgio Armani", name: "Acqua Di Gio Parfum", desc: "The dark, mineral incense version of the ocean breeze. Masterfully rich for daily usage.", notes: ["Marine Notes", "Incense", "Rosemary"] },
-            { gender: "male", group: "extra4", env: "beach", brand: "Maison Margiela", name: "Replica Beach Walk", desc: "Captures the actual warmth of the sun-drenched sand using rich coconut and yuzu.", notes: ["Coconut", "Yuzu", "Benzoin"] },
-            { gender: "male", group: "extra4", env: "special", brand: "Parfums de Marly", name: "Layton Exclusif", desc: "A deeply dark luxury artistic niche night statement carrying animalic woods and apple.", notes: ["Apple", "Civet", "Guaiac Wood"] },
+            { gender: "male", group: "extra4", env: "school", brand: "Lacoste", name: "L.12.12 Magnetic", desc: "An elegant, classy powdery blend of soft violet leaves and rich patchouli.", notes: ["Violet Leaf", "Patchouli", "Bamboo"] },
+            { gender: "male", group: "extra4", env: "work", brand: "Burberry", name: "Touch for Men", desc: "A pristine office classic delivering clean violet sheets and soft white pepper.", notes: ["Violet", "White Pepper", "Tonka Bean"] },
+            { gender: "male", group: "extra4", env: "daily", brand: "Issey Miyake", name: "L'Eau d'Issey Pour Homme", desc: "A masterwork of sharp Japanese yuzu citrus fruit paired with elegant woods.", notes: ["Yuzu", "Nutmeg", "Sandalwood"] },
+            { gender: "male", group: "extra4", env: "beach", brand: "Maison Margiela", name: "Replica Sailing Day", desc: "An authentic, deep blue oceanic splash capturing marine seaweed and mineral elements.", notes: ["Sea Notes", "Seaweed", "Ambergris"] },
+            { gender: "male", group: "extra4", env: "special", brand: "Viktor & Rolf", name: "Spicebomb Infrared", desc: "A blazing hot clubbing elixir powered by red habanero chili and sweet cinnamon.", notes: ["Chili Pepper", "Cinnamon", "Tobacco"] },
 
-            // mid (30-35) - TÜMÜYLE YENİLENDİ, SIFIR ÇAKIŞMA, SIFIR HATA
-            { gender: "male", group: "mid", env: "work", brand: "Cartier", name: "Pasha de Cartier Edition Noire", desc: "A breathtakingly elite corporate fragrance blending fresh green mint leaves with elegant cedar.", notes: ["Mint", "Citrus", "Cedarwood", "Amber"] },
-            { gender: "male", group: "mid", env: "daily", brand: "Amouage", name: "Reflection Man", desc: "An incredibly luxurious, clean masterpiece featuring powdery neroli flowers and smooth jasmine.", notes: ["Neroli", "Jasmine", "Sandalwood", "Vetiver"] },
-            { gender: "male", group: "mid", env: "beach", brand: "Louis Vuitton", name: "Afternoon Swim", desc: "Pure high-end summer bliss. Smells like a freshly squeezed, realistic juicy mandarin orange.", notes: ["Mandarin Orange", "Bergamot", "Ginger"] },
-            { gender: "male", group: "mid", env: "special", brand: "Tom Ford", name: "Oud Wood", desc: "The peak of luxury. An ultra-rich, smoky and entirely sophisticated blend of rare oud wood elements.", notes: ["Oud Wood", "Rosewood", "Cardamom", "Sandalwood"] },
+            // 30-35 YAŞ GRUBU (Tümüyle baştan yazıldı)
+            { gender: "male", group: "mid", env: "work", brand: "Prada", name: "Luna Rossa Black", desc: "An elite, dark office signature highlighting powdery coumarin and luxurious amber.", notes: ["Coumarin", "Amber", "Angelica Root"] },
+            { gender: "male", group: "mid", env: "daily", brand: "Hermes", name: "H24 EDP", desc: "A futuristic, clean daily signature showing metallic steam notes and botanical clary sage.", notes: ["Clary Sage", "Moss", "Rosewood"] },
+            { gender: "male", group: "mid", env: "beach", brand: "Louis Vuitton", name: "Pacific Chill", desc: "Pure luxury. A super-premium coastal fruit smoothie packed with orange and fresh basil.", notes: ["Orange", "Basil", "Mint", "Blackcurrant"] },
+            { gender: "male", group: "mid", env: "special", brand: "Tom Ford", name: "Noir Extreme Parfum", desc: "The ultimate night prestige. Opulent golden cardamom combined with exotic Indian kulfi.", notes: ["Cardamom", "Kulfi Ice Cream", "Leather", "Vanilla"] },
 
-            // senior (35-40)
-            { gender: "male", group: "senior", env: "work", brand: "Hermes", name: "Terre d'Hermes Eau Givree", desc: "An icy-hot corporate masterpiece displaying freezing citron juice over earthy mineral stone.", notes: ["Citron", "Juniper Berries", "Mineral Notes"] },
-            { gender: "male", group: "senior", env: "daily", brand: "Creed", name: "Green Irish Tweed", desc: "Walk through the royal British countryside. Freshly cut grass, verbena leaves, and rich ambergris.", notes: ["Lemon Verbena", "Violet Leaf", "Ambergris"] },
-            { gender: "male", group: "senior", env: "beach", brand: "Goldfield & Banks", name: "Pacific Rock Moss", desc: "An elite niche coastal experience projecting salty sea moss and Italian lemon juices.", notes: ["Sea Moss", "Italian Lemon", "Geranium"] },
-            { gender: "male", group: "senior", env: "special", brand: "Xerjoff", name: "Alexandria II", desc: "The ultimate display of wealth. Complex lavender, rare agarwood, and premium royal cinnamon.", notes: ["Oud", "Lavender", "Cinnamon", "Rose"] },
+            { gender: "male", group: "senior", env: "work", brand: "Narciso Rodriguez", name: "For Him Bleu Noir EDP", desc: "An intellectual corporate blend of raw blue musks, cardamom, and ebony wood.", notes: ["Musk", "Cardamom", "Ebony Wood"] },
+            { gender: "male", group: "senior", env: "daily", brand: "Acqua di Parma", name: "Colonia Club", desc: "Traditional Italian aristocracy refined with cooling mint leaves and clear galbanum resin.", notes: ["Mint", "Galbanum", "Bergamot"] },
+            { gender: "male", group: "senior", env: "beach", brand: "Bvlgari", name: "Aqva Amara", desc: "A rare, bitter luxury beach vibe displaying rich volcanic ozonic notes and patchouli.", notes: ["Bitter Orange", "Ozone", "Patchouli"] },
+            { gender: "male", group: "senior", env: "special", brand: "Parfums de Marly", name: "Oajan", desc: "An extraordinary niche winter masterpiece mimicking warm honey pudding and cinnamon.", notes: ["Honey", "Cinnamon", "Tonka Bean"] },
 
-            // mature (40-45)
-            { gender: "male", group: "mature", env: "work", brand: "Bvlgari", name: "Man Terrae Essence", desc: "Rich corporate warmth highlighting structural smoky vetiver roots and deep tilled soil accords.", notes: ["Earth Accord", "Vetiver", "Citrus"] },
-            { gender: "male", group: "mature", env: "daily", brand: "Penhaligon's", name: "The Tragedy of Lord George", desc: "A poetic British barbershop signature combining rich rum, shaving soap, and amber.", notes: ["Rum", "Shaving Soap", "Tonka Bean"] },
-            { gender: "male", group: "mature", env: "beach", brand: "Acqua di Parma", name: "Blu Mediterraneo Fico di Amalfi", desc: "Captures the steep coast lines of Amalfi with fresh sweet fig milk and bergamot peel.", notes: ["Fig Nectar", "Bergamot", "Grapefruit"] },
-            { gender: "male", group: "mature", env: "special", brand: "Kilian", name: "Angels' Share", desc: "A magnificent gourmand potion mimicking luxury cognac barrels drenched in sweet cinnamon.", notes: ["Cognac", "Cinnamon", "Oak Wood"] },
+            { gender: "male", group: "mature", env: "work", brand: "Dunhill", name: "Century", desc: "A sophisticated, sharp architecture of clean cypriol oil, neroli, and sandalwood.", notes: ["Neroli", "Cypriol Oil", "Sandalwood"] },
+            { gender: "male", group: "mature", env: "daily", brand: "Lalique", name: "Hommage a l'Homme", desc: "A beautiful, powdery dry violet root and agarwood blend for cultured gentlemen.", notes: ["Violet Root", "Oud", "Saffron"] },
+            { gender: "male", group: "mature", env: "beach", brand: "Tom Ford", name: "Costa Azzurra Parfum", desc: "Elite coastal escape blending salty driftwood with aromatic evergreen oak needles.", notes: ["Driftwood", "Oak", "Cypress"] },
+            { gender: "male", group: "mature", env: "special", brand: "Initio", name: "Side Effect", desc: "A highly hypnotic, rich niche blend of high-end dark rum, tobacco, and vanilla.", notes: ["Rum", "Tobacco", "Vanilla"] },
 
-            // extra1 (45-50)
-            { gender: "male", group: "extra1", env: "work", brand: "Guerlain", name: "Vetiver Guerlain", desc: "The ultimate historic standard of professional masculinity. Raw clean vetiver and tobacco.", notes: ["Vetiver", "Tobacco", "Bergamot"] },
-            { gender: "male", group: "extra1", env: "daily", brand: "Dior", name: "Eau Sauvage Parfum", desc: "A legendary daily signature combining heavy San Carlo bergamot with rich, resinous myrrh.", notes: ["Bergamot", "Myrrh", "Vetiver"] },
-            { gender: "male", group: "extra1", env: "beach", brand: "Tom Ford", name: "Neroli Portofino", desc: "High society coastal escape smelling of premium orange blossoms and white amber stones.", notes: ["Neroli", "Bergamot", "Amber"] },
-            { gender: "male", group: "extra1", env: "special", brand: "Nishane", name: "Ani", desc: "An globally praised exotic niche elixir featuring spicy green ginger and heavy bourbon vanilla.", notes: ["Ginger", "Vanilla", "Cardamom"] },
+            { gender: "male", group: "extra1", env: "work", brand: "Guerlain", name: "L'Heure Bleue Pour Homme", desc: "Deep office confidence showing rich anise seed and soft classical powder accents.", notes: ["Anise", "Iris", "Bergamot"] },
+            { gender: "male", group: "extra1", env: "daily", brand: "Cartier", name: "Santos de Cartier", desc: "A powerful, wealthy classical statement utilizing warm nutmeg, sandalwood, and patchouli.", notes: ["Nutmeg", "Sandalwood", "Amber"] },
+            { gender: "male", group: "extra1", env: "beach", brand: "Creed", name: "Millesime Imperial", desc: "The fragrance of royalty. Marine sea salt crystals mixed with sweet watermelon oils.", notes: ["Sea Salt", "Watermelon", "Iris"] },
+            { gender: "male", group: "extra1", env: "special", brand: "Amouage", name: "Jubilation XXV", desc: "An imperial celebration in a bottle. Royal frankincense, dark blackberries, and honey.", notes: ["Blackberry", "Frankincense", "Honey"] },
 
-            // extra2 (50-55 & 55-60)
-            { gender: "male", group: "extra2", env: "work", brand: "Bottega Veneta", name: "Pour Homme", desc: "Luxurious, high-end Italian corporate leather combined with fresh pine needles.", notes: ["Leather", "Pine Tree", "Fir Resin"] },
-            { gender: "male", group: "extra2", env: "daily", brand: "Chanel", name: "Platinum Egoiste", desc: "A shiny, metallic and sharp barbershop masterpiece that projects high status.", notes: ["Lavender", "Rosemary", "Oakmoss"] },
-            { gender: "male", group: "extra2", env: "beach", brand: "Creed", name: "Erolfa", desc: "An authentic, salty yachting experience honoring family maritime traditions.", notes: ["Sea Salt", "Ambergris", "Citrus Trio"] },
-            { gender: "male", group: "extra2", env: "special", brand: "Amouage", name: "Interlude Man", desc: "The legendary royal blue beast. Heavy smoking incense, dark leather, and warm amber resin.", notes: ["Incense", "Oregano", "Oud", "Leather"] },
+            { gender: "male", group: "extra2", env: "work", brand: "Botega Veneta", name: "Illusion", desc: "A crisp, clean modern executive aroma driven by orange peel and rich cedar resin.", notes: ["Bitter Orange", "Cedar", "Fir Balsam"] },
+            { gender: "male", group: "extra2", env: "daily", brand: "Zegna", name: "Florentine Iris", desc: "The ultimate peak of clean linen luxury. Pure premium Italian iris root extract.", notes: ["Florentine Iris", "Bergamot", "Musk"] },
+            { gender: "male", group: "extra2", env: "beach", brand: "Acqua di Parma", name: "Arancia di Capri", desc: "An uplifting, sunny paradise highlighting realistic juicy orange and mandarin juice.", notes: ["Orange", "Mandarin", "Caramel"] },
+            { gender: "male", group: "extra2", env: "special", brand: "Roja Parfums", name: "Enigma Pour Homme", desc: "An elite niche presentation resembling luxury cognac barrels mixed with tobacco vanilla.", notes: ["Cognac", "Tobacco", "Benzoin"] },
 
-            // extra3 (60+)
-            { gender: "male", group: "extra3", env: "work", brand: "Houbigant", name: "Fougere Royale", desc: "The absolute pioneer of masculine elegance. Royal fern greens and aromatic oakmoss.", notes: ["Fern", "Oakmoss", "Geranium"] },
-            { gender: "male", group: "extra3", env: "daily", brand: "Floris", name: "No. 89", desc: "The definitive choice of the classic English gentleman. Soft orange oil and dry sandalwood.", notes: ["Orange", "Rose", "Sandalwood"] },
-            { gender: "male", group: "extra3", env: "beach", brand: "Acqua di Parma", name: "Colonia Essenza", desc: "A flawless, crisp soapiness packed with premium neroli and aromatic rosemary brushes.", notes: ["Neroli", "Grapefruit", "Rosemary"] },
-            { gender: "male", group: "extra3", env: "special", brand: "Roja Parfums", name: "Fetish Pour Homme", desc: "Uncompromising masculine power. Rich vintage leather, deep castoreum, and oak wood.", notes: ["Leather", "Castoreum", "Oakmoss"] },
+            { gender: "male", group: "extra3", env: "work", brand: "Penhaligon's", name: "Sartorial", desc: "Smells exactly like a luxury tailor shop in London. Clean steam, beeswax, and leather.", notes: ["Beeswax", "Metallic Notes", "Leather"] },
+            { gender: "male", group: "extra3", env: "daily", brand: "Hermes", name: "Equipage", desc: "A historic standard of true masculine refinement. Aromatic spices and rich vintage woods.", notes: ["Spices", "Rosewood", "Oakmoss"] },
+            { gender: "male", group: "extra3", env: "beach", brand: "Tom Ford", name: "Mandarino di Amalfi", desc: "A scenic flight over the Italian coast. Sharp wild mint leaves and glowing lemons.", notes: ["Mint", "Lemon", "Tarragon"] },
+            { gender: "male", group: "extra3", env: "special", brand: "Clive Christian", name: "X Pour Homme", desc: "Uncompromising rare luxury. Rich spicy cardamom seeds fused with raw dark iris.", notes: ["Cardamom", "Iris", "Cinnamon"] },
 
 
-            // ==================== FEMALE FRAGRANCES ====================
-            // teen (10-15 & 15-20)
-            { gender: "female", group: "teen", env: "school", brand: "Ariana Grande", name: "Sweet Like Candy", desc: "A joyful sugar rush of fluffy marshmallows and juicy frosted blackberries.", notes: ["Marshmallow", "Blackberry", "Whipped Cream"] },
-            { gender: "female", group: "teen", env: "daily", brand: "Zara", name: "Applejuice", desc: "A crisp, clean and entirely uplifting splash of green apple skin and soft rose petals.", notes: ["Green Apple", "Rose", "Violet"] },
-            { gender: "female", group: "teen", env: "beach", brand: "Sol de Janeiro", name: "Cheirosa 59", desc: "Warm vanilla orchids blended with sugary plums, radiating positive tropical energy.", notes: ["Vanilla Orchid", "Sugar Plum", "Sandalwood"] },
-            { gender: "female", group: "teen", env: "special", brand: "Juicy Couture", name: "Viva La Juicy Neon", desc: "A glowing, vibrant party pop of pink grapefruit juice and sweet warm praline candy.", notes: ["Pink Grapefruit", "Orange Blossom", "Praline"] },
+            // === KADIN PARFÜMLERİ ===
+            { gender: "female", group: "teen", env: "school", brand: "Marc Jacobs", name: "Daisy Love", desc: "Sweet cloudberries mixed with warm daisy petals. Completely innocent and bright.", notes: ["Cloudberry", "Daisy", "Driftwood Musk"] },
+            { gender: "female", group: "teen", env: "daily", brand: "Zara", name: "Orchid", desc: "Fresh orchid stems mixed with bright, sugary bergamot juice for daily comfort.", notes: ["Orchid", "Bergamot", "Peach"] },
+            { gender: "female", group: "teen", env: "beach", brand: "Clean Reserve", name: "Warm Cotton", desc: "Smells exactly like freshly washed white t-shirts drying in the summer breeze.", notes: ["Sea Salt", "Cotton Flower", "Mint"] },
+            { gender: "female", group: "teen", env: "special", brand: "Aquolina", name: "Pink Sugar", desc: "A nostalgic, fun candy cloud made of heavy spun sugar and warm caramel syrup.", notes: ["Cotton Candy", "Caramel", "Licorice"] },
 
-            // young (20-25)
-            { gender: "female", group: "young", env: "school", brand: "Glossier", name: "You", desc: "The ultimate skin scent. Completely unique, clean iris powder and warm pink pepper kernels.", notes: ["Iris", "Pink Pepper", "Ambrette"] },
-            { gender: "female", group: "young", env: "work", brand: "Burberry", name: "Goddess", desc: "An aromatic corporate dream focused on smooth lavender vanilla infusing rich cocoa shell.", notes: ["Vanilla Infusion", "Lavender", "Cacao"] },
-            { gender: "female", group: "young", env: "daily", brand: "Dior", name: "Miss Dior Blooming Bouquet", desc: "A literal dress of pink peonies and fresh white musks for effortless daily charm.", notes: ["Peony", "Damask Rose", "White Musk"] },
-            { gender: "female", group: "young", env: "beach", brand: "Versace", name: "Dylan Turquoise", desc: "A tropical coastal escape matching fizzy primofiore lemons with exotic guava fruit flesh.", notes: ["Lemon", "Guava", "Clearwood"] },
-            { gender: "female", group: "young", env: "special", brand: "Carolina Herrera", name: "Good Girl", desc: "The famous night option contrasting roasted tonka beans with white tuberose bulbs.", notes: ["Tonka Bean", "Tuberose", "Cacao"] },
+            { gender: "female", group: "young", env: "school", brand: "Cacharel", name: "Noa", desc: "A soft, angelic cloud of white musk, baby powder, and a tiny hint of coffee.", notes: ["White Musk", "Peony", "Coffee"] },
+            { gender: "female", group: "young", env: "work", brand: "Lancome", name: "Idole Aura", desc: "A modern business rose salted gently with clean mineral notes and vanilla.", notes: ["Salt", "Rose", "Vanilla"] },
+            { gender: "female", group: "young", env: "daily", brand: "Chloe", name: "Love Story", desc: "A romantic, bubbly daily choice based on fresh orange blossoms and clean cedar.", notes: ["Orange Blossom", "Stephanotis", "Cedar"] },
+            { gender: "female", group: "young", env: "beach", brand: "Sol de Janeiro", name: "Cheirosa 62", desc: "Breezy Brazilian beach energy celebrating warm toasted pistachio and caramel.", notes: ["Pistachio", "Salted Caramel", "Vanilla"] },
+            { gender: "female", group: "young", env: "special", brand: "Burberry", name: "Her London Dream", desc: "A sparkling, addictive evening option highlighting fresh lemon and ginger hints.", notes: ["Ginger", "Lemon", "Peony"] },
 
-            // extra4 (25-30)
-            { gender: "female", group: "extra4", env: "school", brand: "Jo Malone", name: "English Pear & Freesia", desc: "Sophisticated campus style showcasing ripe orchard pears wrapped in white freesia bouquet.", notes: ["King William Pear", "Freesia", "Patchouli"] },
-            { gender: "female", group: "extra4", env: "work", brand: "Giorgio Armani", name: "My Way", desc: "Bright professional presentation combining global white flowers with rich vanilla.", notes: ["Orange Blossom", "Tuberose", "Vanilla"] },
-            { gender: "female", group: "extra4", env: "daily", brand: "Chanel", name: "Chance Eau Fraiche", desc: "An absolute wave of clean energy. Sparkling citron slices grounded by dry teak wood.", notes: ["Citron", "Water Jasmine", "Teak Wood"] },
-            { gender: "female", group: "extra4", env: "beach", brand: "Tom Ford", name: "Soleil Blanc", desc: "Rich private beach luxury carrying elite coco-de-mer milk and solar ylang-ylang.", notes: ["Coconut", "Ylang-Ylang", "Pistachio"] },
-            { gender: "female", group: "extra4", env: "special", brand: "Parfums de Marly", name: "Delina Exclusif", desc: "The peak of luxury night trail. Velvety amber resin mixed with smoky turkish roses.", notes: ["Turkish Rose", "Oud", "Amber"] },
+            { gender: "female", group: "extra4", env: "school", brand: "Philosophy", name: "Amazing Grace", desc: "The ultimate clean girl scent. Crisp bergamot blended with soft lily-of-the-valley.", notes: ["Bergamot", "Lily-of-the-Valley", "Musk"] },
+            { gender: "female", group: "extra4", env: "work", brand: "Estee Lauder", name: "Modern Muse", desc: "An elegant, dynamic professional blend matching sparkling jasmine with sleek woods.", notes: ["Jasmine", "Sleek Woods", "Mandarin"] },
+            { gender: "female", group: "extra4", env: "daily", brand: "Giorgio Armani", name: "Si Fiori", desc: "A cozy daily hug consisting of soft sweet blackcurrant syrup and white neroli.", notes: ["Blackcurrant", "Neroli", "Vanilla"] },
+            { gender: "female", group: "extra4", env: "beach", brand: "Dolce & Gabbana", name: "Light Blue Sun", desc: "Coconut water infused with classic Light Blue lemon juice for high summer bliss.", notes: ["Coconut", "Lemon", "Frangipani"] },
+            { gender: "female", group: "extra4", env: "special", brand: "Yves Saint Laurent", name: "Black Opium Le Parfum", desc: "A highly hypnotic evening statement loaded with four massive premium vanilla notes.", notes: ["Quad Vanilla", "Coffee", "White Flowers"] },
 
-            // mid (30-35)
-            { gender: "female", group: "mid", env: "work", brand: "Prada", name: "Paradoxe", desc: "Dynamic professional elegance celebrating crisp neroli buds and vibrant amber molecules.", notes: ["Neroli Bud", "Amber", "White Musk"] },
-            { gender: "female", group: "mid", env: "daily", brand: "Yves Saint Laurent", name: "Libre EDP", desc: "The standard of independence. Divine French lavender meeting sensual Moroccan orange blossom.", notes: ["Lavender", "Orange Blossom", "Madagascar Vanilla"] },
-            { gender: "female", group: "mid", env: "beach", brand: "Estee Lauder", name: "Bronze Goddess Nuit", desc: "Mediterranean twilight breeze loaded with rich coconut meat and night-blooming orchids.", notes: ["Coconut", "Night Orchid", "Beach Amber"] },
-            { gender: "female", group: "mid", env: "special", brand: "Maison Francis Kurkdjian", name: "Baccarat Rouge 540 Extrait", desc: "Unrivaled luxury trail. Heavy crimson saffron threads mixed with roasted bitter almond oil.", notes: ["Saffron", "Bitter Almond", "Cedarwood"] },
+            { gender: "female", group: "mid", env: "work", brand: "Chanel", name: "Chance Eau Tendre EDP", desc: "The pinnacle of corporate refinement. Soft, powdery quince fruit and pure jasmine.", notes: ["Quince", "Jasmine", "Rose"] },
+            { gender: "female", group: "mid", env: "daily", brand: "Jo Malone", name: "Wood Sage & Sea Salt", desc: "A highly calming, peaceful daily wave of sea salt crust and herbal sage bushes.", notes: ["Sea Salt", "Sage", "Ambrette"] },
+            { gender: "female", group: "mid", env: "beach", brand: "Guerlain", name: "Aqua Allegoria Coconut Fizz", desc: "Elite beach vacation energy. Fresh coconut water splashed with juicy freesia petals.", notes: ["Coconut Water", "Freesia", "Sandalwood"] },
+            { gender: "female", group: "mid", env: "special", brand: "Parfums de Marly", name: "Delina", desc: "The master of modern niche night trails. Rich Turkish rose petals and fresh rhubarb.", notes: ["Turkish Rose", "Rhubarb", "Lychee"] },
 
-            // senior (35-40)
-            { gender: "female", group: "senior", env: "work", brand: "Narciso Rodriguez", name: "For Her Musc Noir Rose", desc: "Deeply intellectual corporate signature playing with clean musk and juicy dark plums.", notes: ["Musk", "Plum", "Tuberose"] },
-            { gender: "female", group: "senior", env: "daily", brand: "Byredo", name: "Gypsy Water", desc: "A nomadic daily fantasy of fresh pine needles, incense puffs, and light lemon juice.", notes: ["Juniper", "Pine Needle", "Incense"] },
-            { gender: "female", group: "senior", env: "beach", brand: "Guerlain", name: "Aqua Allegoria Pamplelune", desc: "A hyper-refreshing coastal citrus burst showcasing realistic bitter grapefruit flesh.", notes: ["Grapefruit", "Patchouli", "Bergamot"] },
-            { gender: "female", group: "senior", env: "special", brand: "Tom Ford", name: "Black Orchid", desc: "Dark gothic glamour. Rich black truffles mixed with dark spiced orchid leaves.", notes: ["Black Truffle", "Orchid", "Dark Chocolate"] },
+            { gender: "female", group: "senior", env: "work", brand: "Prada", name: "Infusion d'Iris", desc: "Smells like a luxury 5-star hotel sheet. Elegant dry iris root and clean neroli oils.", notes: ["Iris", "Neroli", "Cedarwood"] },
+            { gender: "female", group: "senior", env: "daily", brand: "Byredo", name: "Bal d'Afrique", desc: "An absolute artistic daily fantasy mixing african marigold with Moroccan cedarwood.", notes: ["Marigold", "Vetiver", "Bergamot"] },
+            { gender: "female", group: "senior", env: "beach", brand: "Tom Ford", name: "Eau de Soleil Blanc", desc: "Sparkling private beach luxury full of radiant solar citruses and white musk.", notes: ["Coconut Water", "Ylang-Ylang", "Citrus"] },
+            { gender: "female", group: "senior", env: "special", brand: "Maison Francis Kurkdjian", name: "Gentle Fluidity Gold", desc: "An outstanding golden cloud of heavy bourbon vanilla, amber woods, and fresh musk.", notes: ["Vanilla", "Amber", "Musk"] },
 
-            // mature (40-45)
-            { gender: "female", group: "mature", env: "work", brand: "Chanel", name: "Coco Noir", desc: "Magnetic corporate dominance showcasing dark baroque patchouli leaves and luminous roses.", notes: ["Patchouli", "Rose", "Frankincense"] },
-            { gender: "female", group: "mature", env: "daily", brand: "Creed", name: "Aventus for Her", desc: "The queen counterpart. Empowering crisp green apples mixed with warm pink pepper resin.", notes: ["Green Apple", "Pink Pepper", "Sandalwood"] },
-            { gender: "female", group: "mature", env: "beach", brand: "Maison Margiela", name: "Replica Sailing Day", desc: "Crisp blue ocean air combined with mineral aquatic notes and red seaweed stems.", notes: ["Sea Notes", "Seaweed", "Ambergris"] },
-            { gender: "female", group: "mature", env: "special", brand: "Xerjoff", name: "Lira", desc: "An elite niche dessert. Sweet blood orange dripping over heavy caramel and vanilla beans.", notes: ["Blood Orange", "Caramel", "Vanilla"] },
+            { gender: "female", group: "mature", env: "work", brand: "Giorgio Armani", name: "Si Passione", desc: "An empowering, confident red statement mixing sharp blackcurrant with deep roses.", notes: ["Blackcurrant", "Rose", "Vanilla"] },
+            { gender: "female", group: "mature", env: "daily", brand: "Dior", name: "Miss Dior Absolutely Blooming", desc: "A deep, fruity-floral joy packed with thick raspberries and premium Grasse roses.", notes: ["Raspberry", "Grasse Rose", "Pomegranate"] },
+            { gender: "female", group: "mature", env: "beach", brand: "Estee Lauder", name: "Bronze Goddess EDP", desc: "Warm beach luxury filled with creamy coconut milk, rich tiare flowers, and amber.", notes: ["Coconut", "Tiare Flower", "Amber"] },
+            { gender: "female", group: "mature", env: "special", brand: "Xerjoff", name: "Lira", desc: "An exceptional niche dessert trail. Blood orange glaze melting over warm caramel.", notes: ["Blood Orange", "Caramel", "Vanilla"] },
 
-            // extra1 (45-50)
-            { gender: "female", group: "extra1", env: "work", brand: "Cartier", name: "La Panthere", desc: "A regal, modern chypre corporate profile focused on fresh gardenias and velvet musk.", notes: ["Gardenia", "Oakmoss", "Musk"] },
-            { gender: "female", group: "extra1", env: "daily", brand: "Dior", name: "J'adore L'Or", desc: "An absolute golden drop of the world's most premium jasmine grandiflorum fields.", notes: ["Jasmine", "Orange Blossom", "Rose"] },
-            { gender: "female", group: "extra1", env: "beach", brand: "Van Cleef & Arpels", name: "California Reverie", desc: "Basking in a sunlit private coastal garden full of fresh frangipani branches.", notes: ["Frangipani", "Jasmine", "Mandarin"] },
-            { gender: "female", group: "extra1", env: "special", brand: "Amouage", name: "Guidance", desc: "Hypnotic niche trail capturing creamy pear nectar, hazelnut milk, and royal frankincense.", notes: ["Pear", "Hazelnut", "Frankincense"] },
+            { gender: "female", group: "extra1", env: "work", brand: "Narciso Rodriguez", name: "Pure Musc", desc: "An incredibly pristine, sophisticated musk that radiates modern corporate confidence.", notes: ["Musk", "White Flowers", "Cashmeran"] },
+            { gender: "female", group: "extra1", env: "daily", brand: "Yves Saint Laurent", name: "Libre Intense", desc: "A heavy, warm statement mixing classical French lavender with thick vanilla syrup.", notes: ["Lavender", "Vanilla", "Amber"] },
+            { gender: "female", group: "extra1", env: "beach", brand: "Maison Margiela", name: "Replica Beach Walk", desc: "Perfectly mirrors hot ocean sand, salt water, and luxurious solar sunscreen notes.", notes: ["Coconut Milk", "Ylang-Ylang", "Bergamot"] },
+            { gender: "female", group: "extra1", env: "special", brand: "Dior", name: "Hypnotic Poison", desc: "A deeply hypnotic, mysterious evening potion dominated by bitter almond dust.", notes: ["Almond", "Vanilla", "Caraway"] },
 
-            // extra2 (50-55 & 55-60)
-            { gender: "female", group: "extra2", env: "work", brand: "Hermes", name: "Elixir des Merveilles", desc: "Sophisticated dry orange peels blended with dark amber woods and oak resins.", notes: ["Amber", "Orange Peel", "Resins"] },
-            { gender: "female", group: "extra2", env: "daily", brand: "Sisley", name: "Eau du Soir", desc: "The ultimate peak of wealthy aristocracy. Complex rich moss and clean white flowers.", notes: ["Oakmoss", "Iris", "Patchouli"] },
-            { gender: "female", group: "extra2", env: "beach", brand: "Jo Malone", name: "Wood Sage & Sea Salt", desc: "Mineral coastal waves clashing into driftwood and aromatic herbal sage bushes.", notes: ["Sea Salt", "Sage", "Ambrette"] },
-            { gender: "female", group: "extra2", env: "special", brand: "Kilian", name: "Good Girl Gone Bad Extreme", desc: "Opulent private ball scent highlighting lactonic milk layers over sweet osmanthus bloom.", notes: ["Osmanthus", "Milk Accord", "Tuberose"] },
+            { gender: "female", group: "extra2", env: "work", brand: "Hermes", name: "Twilly d'Hermes", desc: "A creative corporate profile mixing sharp fresh ginger root with sweet tuberose.", notes: ["Ginger", "Tuberose", "Sandalwood"] },
+            { gender: "female", group: "extra2", env: "daily", brand: "Sisley", name: "Eau du Soir", desc: "The definitive scent of wealth and high society. Complex mosses and elite florals.", notes: ["Oakmoss", "Iris", "Patchouli"] },
+            { gender: "female", group: "extra2", env: "beach", brand: "Van Cleef & Arpels", name: "California Reverie", desc: "A sun-kissed walk through private coastal gardens filled with fresh frangipani.", notes: ["Frangipani", "Jasmine", "Mandarin"] },
+            { gender: "female", group: "extra2", env: "special", brand: "Kilian", name: "Love Don't Be Shy", desc: "The ultimate gourmet masterpiece. Fluffy white marshmallows drenched in vanilla.", notes: ["Marshmallow", "Orange Blossom", "Vanilla"] },
 
-            // extra3 (60+)
-            { gender: "female", group: "extra3", env: "work", brand: "Chanel", name: "No. 19 Poudre", desc: "The ultimate professional soft boundary. Velvety iris powder and crisp green galbanum.", notes: ["Iris Powder", "Galbanum", "White Musk"] },
-            { gender: "female", group: "extra3", env: "daily", brand: "Guerlain", name: "L'Heure Bleue", desc: "A historic masterpiece of romantic melancholy. Soft violet dust and powdery anise.", notes: ["Anise", "Violet", "Iris"] },
-            { gender: "female", group: "extra3", env: "beach", brand: "Hermes", name: "Un Jardin En Mediterranee", desc: "Strolling through a sea-facing palace yard filled with fresh green fig leaves.", notes: ["Fig Leaf", "Cypress", "Red Cedar"] },
-            { gender: "female", group: "extra3", env: "special", brand: "Roja Parfums", name: "51 Pour Femme", desc: "An orchestra of immense luxury. Creamy rich ylang-ylang, deep cashmeran, and vanilla.", notes: ["Ylang-Ylang", "Cashmeran", "Vanilla"] }
+            { gender: "female", group: "extra3", env: "work", brand: "Dior", name: "J'adore EDP", desc: "A majestic golden bouquet of rare damask roses, exotic ylang-ylang, and jasmine.", notes: ["Ylang-Ylang", "Damask Rose", "Jasmine"] },
+            { gender: "female", group: "extra3", env: "daily", brand: "Hermes", name: "Eau des Merveilles", desc: "An enchanting, warm woody-amber glow entirely free from dominant heavy flowers.", notes: ["Ambergris", "Orange", "Elemi Resin"] },
+            { gender: "female", group: "extra3", env: "beach", brand: "Hermes", name: "Un Jardin En Mediterranee", desc: "Strolling through royal sea-facing yards filled with green fresh fig leaves.", notes: ["Fig Leaf", "Cypress", "Cedar"] },
+            { gender: "female", group: "extra3", env: "special", brand: "Maison Francis Kurkdjian", name: "Baccarat Rouge 540", desc: "A legendary masterpiece showcasing expensive saffron threads and golden amberwoods.", notes: ["Saffron", "Jasmine", "Amberwood"] }
         ];
 
-        function handleGender(gender, element) {
-            globalState.gender = gender;
-            const buttons = document.querySelectorAll('#step-gender .option-btn');
-            buttons.forEach(btn => btn.classList.remove('active', 'female-active'));
-            
-            if (gender === 'female') {
-                element.classList.add('active', 'female-active');
-            } else {
-                element.classList.add('active');
-            }
-            
+        function selectGender(gender, btn) {
+            selections.gender = gender;
+            document.querySelectorAll('#step-gender .option-btn').forEach(b => b.classList.remove('active', 'female-active'));
+            btn.classList.add('active');
+            if (gender === 'female') btn.classList.add('female-active');
             document.getElementById('step-age').classList.remove('hidden');
-            wipeState('age');
+            resetState('age');
         }
 
-        function handleAge(age, element) {
-            globalState.age = age;
-            const buttons = document.querySelectorAll('#step-age .option-btn');
-            buttons.forEach(btn => btn.classList.remove('active', 'female-active'));
-            
-            if (globalState.gender === 'female') {
-                element.classList.add('active', 'female-active');
-            } else {
-                element.classList.add('active');
-            }
-            
-            generateDynamicEnvironments(age);
+        function selectAge(age, btn) {
+            selections.age = age;
+            document.querySelectorAll('#step-age .option-btn').forEach(b => b.classList.remove('active', 'female-active'));
+            btn.classList.add('active');
+            if (selections.gender === 'female') btn.classList.add('female-active');
+            buildEnvironments(age);
             document.getElementById('step-environment').classList.remove('hidden');
-            wipeState('env');
+            resetState('env');
         }
 
-        function generateDynamicEnvironments(age) {
-            const dynamicContainer = document.getElementById('env-buttons-dynamic');
-            dynamicContainer.innerHTML = '';
+        function buildEnvironments(age) {
+            const container = document.getElementById('env-container');
+            container.innerHTML = '';
 
-            const environmentDictionary = {
-                school: { text: "School / Campus", icon: "fa-solid fa-graduation-cap" },
-                work: { text: "Corporate / Work", icon: "fa-solid fa-briefcase" },
-                daily: { text: "Casual / Daily", icon: "fa-solid fa-house-user" },
-                beach: { text: "Beach / Cruise", icon: "fa-solid fa-umbrella-beach" },
+            const envs = {
+                school: { text: "School", icon: "fa-solid fa-graduation-cap" },
+                work: { text: "Work", icon: "fa-solid fa-briefcase" },
+                daily: { text: "Daily", icon: "fa-solid fa-house-user" },
+                beach: { text: "Beach", icon: "fa-solid fa-umbrella-beach" },
                 special: { text: "Special Night", icon: "fa-solid fa-champagne-glasses" }
             };
 
-            let visibleEnvironments = [];
-            let checkAge = parseInt(age.split('-')[0]);
+            let startAge = parseInt(age.split('-')[0]);
+            let activeKeys = [];
 
-            if (checkAge < 20) {
-                visibleEnvironments = ['school', 'daily', 'beach', 'special'];
-            } else if (checkAge === 20) {
-                visibleEnvironments = ['school', 'work', 'daily', 'beach', 'special'];
-            } else {
-                visibleEnvironments = ['work', 'daily', 'beach', 'special'];
-            }
+            if (startAge < 20) activeKeys = ['school', 'daily', 'beach', 'special'];
+            else if (startAge === 20) activeKeys = ['school', 'work', 'daily', 'beach', 'special'];
+            else activeKeys = ['work', 'daily', 'beach', 'special'];
 
-            visibleEnvironments.forEach(key => {
-                const data = environmentDictionary[key];
-                const btn = document.createElement('button');
-                btn.className = 'option-btn';
-                btn.innerHTML = `<i class="${data.icon}"></i>${data.text}`;
-                btn.onclick = function() { executeEnvironmentSelection(key, this); };
-                dynamicContainer.appendChild(btn);
+            activeKeys.forEach(k => {
+                const item = envs[k];
+                const button = document.createElement('button');
+                button.className = 'option-btn';
+                button.innerHTML = `<i class="${item.icon}"></i>${item.text}`;
+                button.onclick = function() { selectEnvironment(k, this); };
+                container.appendChild(button);
             });
         }
 
-        function executeEnvironmentSelection(env, element) {
-            globalState.environment = env;
-            const buttons = document.querySelectorAll('#step-environment .option-btn');
-            buttons.forEach(btn => btn.classList.remove('active', 'female-active'));
-            
-            if (globalState.gender === 'female') {
-                element.classList.add('active', 'female-active');
-            } else {
-                element.classList.add('active');
-            }
-            renderFinalFormulation();
+        function selectEnvironment(env, btn) {
+            selections.env = env;
+            document.querySelectorAll('#step-environment .option-btn').forEach(b => b.classList.remove('active', 'female-active'));
+            btn.classList.add('active');
+            if (selections.gender === 'female') btn.classList.add('female-active');
+            calculateResult();
         }
 
-        function renderFinalFormulation() {
-            const outputSection = document.getElementById('result-section');
-            const targetContainer = document.getElementById('perfume-results-card');
-            targetContainer.innerHTML = '';
+        function calculateResult() {
+            const resultSection = document.getElementById('result-section');
+            const target = document.getElementById('perfume-result-target');
+            target.innerHTML = '';
 
-            let ageParser = parseInt(globalState.age.split('-')[0]);
-            let targetGroup = "teen";
+            let startAge = parseInt(selections.age.split('-')[0]);
+            let mappedGroup = "teen";
 
-            if (ageParser >= 10 && ageParser < 20) targetGroup = "teen";
-            else if (ageParser >= 20 && ageParser < 25) targetGroup = "young";
-            else if (ageParser >= 25 && ageParser < 30) targetGroup = "extra4";
-            else if (ageParser >= 30 && ageParser < 35) targetGroup = "mid";
-            else if (ageParser >= 35 && ageParser < 40) targetGroup = "senior";
-            else if (ageParser >= 40 && ageParser < 45) targetGroup = "mature";
-            else if (ageParser >= 45 && ageParser < 50) targetGroup = "extra1";
-            else if (ageParser >= 50 && ageParser < 60) targetGroup = "extra2";
-            else if (ageParser >= 60) targetGroup = "extra3";
+            // HATANIN ÇÖZÜLDÜĞÜ KRİTİK KONTROL NOKTASI (>= mantığı eklendi)
+            if (startAge >= 10 && startAge < 20) mappedGroup = "teen";
+            else if (startAge >= 20 && startAge < 25) mappedGroup = "young";
+            else if (startAge >= 25 && startAge < 30) mappedGroup = "extra4";
+            else if (startAge >= 30 && startAge < 35) mappedGroup = "mid";
+            else if (startAge >= 35 && startAge < 40) mappedGroup = "senior";
+            else if (startAge >= 40 && startAge < 45) mappedGroup = "mature";
+            else if (startAge >= 45 && startAge < 50) mappedGroup = "extra1";
+            else if (startAge >= 50 && startAge < 60) mappedGroup = "extra2";
+            else if (startAge >= 60) mappedGroup = "extra3";
 
-            // KESİN ARAMA PROTOKOLÜ
-            let finalSelection = MasterDatabase.find(p => p.gender === globalState.gender && p.group === targetGroup && p.env === globalState.environment);
+            let match = perfumePool.find(p => p.gender === selections.gender && p.group === mappedGroup && p.env === selections.env);
 
-            // GÜVENLİK FİLTRESİ
-            if (!finalSelection) {
-                finalSelection = MasterDatabase.find(p => p.gender === globalState.gender && p.env === globalState.environment);
-            }
-
-            const elementCard = document.createElement('div');
-            elementCard.className = 'perfume-card';
-            if(globalState.gender === 'female') {
-                elementCard.style.borderLeftColor = '#cca4b4';
-            }
+            const card = document.createElement('div');
+            card.className = 'perfume-card';
+            if(selections.gender === 'female') card.style.borderLeftColor = '#cca4b4';
             
-            let structuredNotes = finalSelection.notes.map(n => `<span class="note-tag">${n}</span>`).join('');
-            
-            elementCard.innerHTML = `
-                <div class="perfume-brand">${finalSelection.brand}</div>
-                <div class="perfume-name">${finalSelection.name}</div>
-                <div class="perfume-desc">${finalSelection.desc}</div>
-                <div class="perfume-notes">${structuredNotes}</div>
+            let tags = match.notes.map(n => `<span class="note-tag">${n}</span>`).join('');
+            card.innerHTML = `
+                <div class="perfume-brand">${match.brand}</div>
+                <div class="perfume-name">${match.name}</div>
+                <div class="perfume-desc">${match.desc}</div>
+                <div class="perfume-notes">${tags}</div>
             `;
+            target.appendChild(card);
             
-            targetContainer.appendChild(elementCard);
-            outputSection.classList.remove('hidden');
-            outputSection.scrollIntoView({ behavior: 'smooth' });
+            resultSection.classList.remove('hidden');
+            resultSection.scrollIntoView({ behavior: 'smooth' });
         }
 
-        function wipeState(level) {
-            if (level === 'age') {
+        function resetState(step) {
+            if (step === 'age') {
                 document.getElementById('step-environment').classList.add('hidden');
-                globalState.age = null; globalState.environment = null;
+                selections.age = null; selections.env = null;
             }
-            if (level === 'env') { globalState.environment = null; }
+            if (step === 'env') { selections.env = null; }
             document.getElementById('result-section').classList.add('hidden');
         }
     </script>
