@@ -231,8 +231,8 @@
             { gender: "male", group: "extra4", env: "beach", brand: "Maison Margiela", name: "Replica Sailing Day", desc: "An authentic luxury aquatic escape blending salty marine seaweed with crisp mineral chords.", notes: ["Sea Notes", "Seaweed", "Ambergris"] },
             { gender: "male", group: "extra4", env: "special", brand: "Xerjoff", name: "Naxos", desc: "The absolute pinnacle of luxury night scents. Premium golden honey melting over rich tobacco leaves.", notes: ["Honey", "Tobacco", "Lavender", "Vanilla"] },
 
-            // 30-35 YAŞ GRUBU (mid) - Sabitlenen ve Eşleşen Work Parfümü
-            { gender: "male", group: "mid", env: "work", brand: "Bleu de Chanel", name: "EDP", desc: "The ultimate gold standard for corporate leadership. Crisp luxury citruses meeting rich incenses.", notes: ["Grapefruit", "Incense", "Amber", "Cedar"] },
+            // 30-35 YAŞ ERKEK GRUBU (mid) - Eksiksiz ve Hataları Düzeltilmiş Set
+            { gender: "male", group: "mid", env: "work", brand: "Chanel", name: "Bleu de Chanel EDP", desc: "The ultimate gold standard for corporate leadership. Crisp luxury citruses meeting rich incenses.", notes: ["Grapefruit", "Incense", "Amber", "Cedar"] },
             { gender: "male", group: "mid", env: "daily", brand: "Dior", name: "Homme Intense", desc: "A legendary masterpiece of luxury. A deeply rich, sophisticated, and powdery iris trail.", notes: ["Iris", "Lavender", "Ambrette", "Cedar"] },
             { gender: "male", group: "mid", env: "beach", brand: "Louis Vuitton", name: "Pacific Chill", desc: "Pure elite coastal escape. A super-premium coastal fruit smoothie packed with orange and fresh basil.", notes: ["Orange", "Basil", "Mint", "Blackcurrant"] },
             { gender: "male", group: "mid", env: "special", brand: "Tom Ford", name: "Noir Extreme Parfum", desc: "Prestige in a bottle. Rich, warm oriental spices blended with exotic Indian kulfi ice cream.", notes: ["Cardamom", "Kulfi", "Leather", "Vanilla"] },
@@ -281,6 +281,7 @@
             { gender: "female", group: "extra4", env: "beach", brand: "Dolce & Gabbana", name: "Light Blue Intense", desc: "The absolute queen of summer oceans. Sharp frozen lemon slices mixed with heavy sea salt crust.", notes: ["Lemon", "Marigold", "Amberwood", "Musk"] },
             { gender: "female", group: "extra4", env: "special", brand: "Yves Saint Laurent", name: "Black Opium Le Parfum", desc: "The ultimate night prestige. Hypnotic dark coffee blended with four massive premium vanilla notes.", notes: ["Quad Vanilla", "Coffee", "White Flowers"] },
 
+            // 30-35 YAŞ KADIN GRUBU (mid) - Eksiksiz Set
             { gender: "female", group: "mid", env: "work", brand: "Chanel", name: "Chance Eau Tendre EDP", desc: "The undisputed queen of corporate grace. Masterfully clean, powdery quince fruit and roses.", notes: ["Quince", "Jasmine", "Rose", "White Musk"] },
             { gender: "female", group: "mid", env: "daily", brand: "Yves Saint Laurent", name: "Libre Intense", desc: "The ultimate daily power move. Rich, warm French lavender syrup mixed with heavy bourbon vanilla.", notes: ["Warm Lavender", "Bourbon Vanilla", "Orange Blossom", "Amber"] },
             { gender: "female", group: "mid", env: "beach", brand: "Guerlain", name: "Aqua Allegoria Coconut Fizz", desc: "Elite beach vacation luxury. Fresh exotic coconut water splashed with clean freesia flowers.", notes: ["Coconut Water", "Freesia", "Sandalwood"] },
@@ -390,6 +391,19 @@
 
             const card = document.createElement('div');
             card.className = 'perfume-card';
+            
+            // Güvenlik Koruması: Eğer eşleşen parfüm bulunamazsa çökme, uyarı ver.
+            if (!match) {
+                card.innerHTML = `
+                    <div class="perfume-brand" style="color: red;">Error</div>
+                    <div class="perfume-name">Recommendation Not Found</div>
+                    <div class="perfume-desc">The database entry for this combination is currently missing. Please verify pool keys.</div>
+                `;
+                target.appendChild(card);
+                resultSection.classList.remove('hidden');
+                return;
+            }
+
             if(selections.gender === 'female') card.style.borderLeftColor = '#cca4b4';
             
             let tags = match.notes.map(n => `<span class="note-tag">${n}</span>`).join('');
