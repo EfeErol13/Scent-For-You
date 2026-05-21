@@ -161,7 +161,7 @@
 <body>
 
     <div class="container">
-        <h1>Scent <span>For You</span></h1>
+        <h1>Scent<span>For You</span></h1>
 
         <div id="step-gender">
             <div class="step-title"><i class="fa-solid fa-venus-mars"></i> Select Gender</div>
@@ -212,105 +212,105 @@
     <script>
         let selections = { gender: null, age: null, env: null };
 
-        // Tümüyle yenilenmiş, %100 özgün koku listesi
+        // Hem saygın designer'ları içeren hem de lüks niş kokuları barındıran dengeli havuz
         const perfumePool = [
             // === ERKEK PARFÜMLERİ ===
-            { gender: "male", group: "teen", env: "school", brand: "Tommy Hilfiger", name: "Tommy Boy", desc: "A fresh, energetic citrus blend with crisp mint and green apple nodes.", notes: ["Mint", "Bergamot", "Cranberry"] },
-            { gender: "male", group: "teen", env: "daily", brand: "Calvin Klein", name: "CK One", desc: "The legendary clean, light, and airy green tea scent tailored for daily activities.", notes: ["Green Tea", "Lemon", "Musk"] },
-            { gender: "male", group: "teen", env: "beach", brand: "Hollister", name: "Free Wave", desc: "Salted lime juice mixed with fresh ginger roots, providing ultimate beach comfort.", notes: ["Lime", "Ginger", "Driftwood"] },
-            { gender: "male", group: "teen", env: "special", brand: "Zara", name: "Night Pour Homme II", desc: "A modern, sweet oriental scent with aromatic lavender and soft amber.", notes: ["Lavender", "Amber", "Bergamot"] },
+            { gender: "male", group: "teen", env: "school", brand: "Montblanc", name: "Legend Spirit", desc: "A crisp, fresh, and modern casual masterpiece that stands out beautifully in classrooms.", notes: ["Grapefruit", "Lavender", "White Musk"] },
+            { gender: "male", group: "teen", env: "daily", brand: "Chanel", name: "Allure Homme Sport", desc: "High-end athletic luxury. Creamy, breezy, and infinitely charming for daily wear.", notes: ["Orange", "Marine Notes", "Tonka Bean"] },
+            { gender: "male", group: "teen", env: "beach", brand: "Davidoff", name: "Cool Water Reborn", desc: "A modern, highly refined return of the oceanic legend with clean rosemary elements.", notes: ["Galbanum", "Rosemary", "Vetiver"] },
+            { gender: "male", group: "teen", env: "special", brand: "Versace", name: "Eros Flame", desc: "A fiery, passionate night signature combining bitter citrus fruits with rich vanilla layers.", notes: ["Chinotto", "Black Pepper", "Vanilla"] },
 
-            { gender: "male", group: "young", env: "school", brand: "Montblanc", name: "Starwalker", desc: "Crisp bamboo shoots layered with smooth white musk, clean and unobtrusive.", notes: ["Bamboo", "White Musk", "Cedar"] },
-            { gender: "male", group: "young", env: "work", brand: "Karl Lagerfeld", name: "Bois de Vetiver", desc: "A neat, fresh corporate setup emphasizing clean vetiver leaves and fresh mint.", notes: ["Vetiver", "Mint", "Blood Orange"] },
-            { gender: "male", group: "young", env: "daily", brand: "Coach", name: "Blue", desc: "An invigorating daily marine composition with lime juice and black pepper accents.", notes: ["Lime", "Ozone Notes", "Cedarwood"] },
-            { gender: "male", group: "young", env: "beach", brand: "Davidoff", name: "Cool Water Intense", desc: "A boosted coconut water breeze mixed with rich amber, built for long beach days.", notes: ["Coconut Water", "Amber", "Mandarin"] },
-            { gender: "male", group: "young", env: "special", brand: "Versace", name: "Eros Flame", desc: "A fiery evening champion featuring bitter chinotto orange and heavy vanilla bean.", notes: ["Chinotto", "Black Pepper", "Vanilla"] },
+            { gender: "male", group: "young", env: "school", brand: "Paco Rabanne", name: "Invictus Platinum", desc: "An upscale, sharp herbal-mint evolution of the champion DNA tailored for young crowds.", notes: ["Mint", "Lavender", "Cypress"] },
+            { gender: "male", group: "young", env: "work", brand: "Montblanc", name: "Explorer", desc: "The defining corporate choice for young professionals. Sharp, smoky, and highly charismatic.", notes: ["Bergamot", "Vetiver", "Ambroxan"] },
+            { gender: "male", group: "young", env: "daily", brand: "Yves Saint Laurent", name: "Y EDP", desc: "The definitive modern king of blue fragrances. Incredible crisp apple mixed with sharp sage.", notes: ["Apple", "Sage", "Ginger", "Amberwood"] },
+            { gender: "male", group: "young", env: "beach", brand: "Giorgio Armani", name: "Acqua Di Gio Profondo", desc: "A profound, high-end deep marine splash capturing intense mineral and ozonic elements.", notes: ["Marine Notes", "Green Mandarin", "Mineral Notes"] },
+            { gender: "male", group: "young", env: "special", brand: "Parfums de Marly", name: "Althair", desc: "Absolute modern luxury. A hypnotic, ultra-premium bourbon vanilla mixed with warm cardamom spices.", notes: ["Bourbon Vanilla", "Cardamom", "Cinnamon", "Guaiac Wood"] },
 
-            { gender: "male", group: "extra4", env: "school", brand: "Lacoste", name: "L.12.12 Magnetic", desc: "An elegant, classy powdery blend of soft violet leaves and rich patchouli.", notes: ["Violet Leaf", "Patchouli", "Bamboo"] },
-            { gender: "male", group: "extra4", env: "work", brand: "Burberry", name: "Touch for Men", desc: "A pristine office classic delivering clean violet sheets and soft white pepper.", notes: ["Violet", "White Pepper", "Tonka Bean"] },
-            { gender: "male", group: "extra4", env: "daily", brand: "Issey Miyake", name: "L'Eau d'Issey Pour Homme", desc: "A masterwork of sharp Japanese yuzu citrus fruit paired with elegant woods.", notes: ["Yuzu", "Nutmeg", "Sandalwood"] },
-            { gender: "male", group: "extra4", env: "beach", brand: "Maison Margiela", name: "Replica Sailing Day", desc: "An authentic, deep blue oceanic splash capturing marine seaweed and mineral elements.", notes: ["Sea Notes", "Seaweed", "Ambergris"] },
-            { gender: "male", group: "extra4", env: "special", brand: "Viktor & Rolf", name: "Spicebomb Infrared", desc: "A blazing hot clubbing elixir powered by red habanero chili and sweet cinnamon.", notes: ["Chili Pepper", "Cinnamon", "Tobacco"] },
+            { gender: "male", group: "extra4", env: "school", brand: "Prada", name: "Luna Rossa Ocean EDP", desc: "An upscale, sophisticated powdery-woody presence that commands respect without trying too hard.", notes: ["Grapefruit", "Iris", "Vanilla"] },
+            { gender: "male", group: "extra4", env: "work", brand: "Prada", name: "Luna Rossa Carbon", desc: "The ultimate elite office signature. Metallic lavender notes layered over rich ambroxan.", notes: ["Lavender", "Metallic Notes", "Ambroxan"] },
+            { gender: "male", group: "extra4", env: "daily", brand: "Dior", name: "Sauvage EDP", desc: "A globally acclaimed powerhouse. Crisp, rich, mysterious calabrian bergamot and warm amber.", notes: ["Calabrian Bergamot", "Sichuan Pepper", "Ambroxan"] },
+            { gender: "male", group: "extra4", env: "beach", brand: "Maison Margiela", name: "Replica Sailing Day", desc: "An authentic luxury aquatic escape blending salty marine seaweed with crisp mineral chords.", notes: ["Sea Notes", "Seaweed", "Ambergris"] },
+            { gender: "male", group: "extra4", env: "special", brand: "Xerjoff", name: "Naxos", desc: "The absolute pinnacle of luxury night scents. Premium golden honey melting over rich tobacco leaves.", notes: ["Honey", "Tobacco", "Lavender", "Vanilla"] },
 
-            // 30-35 YAŞ GRUBU (Tümüyle baştan yazıldı)
-            { gender: "male", group: "mid", env: "work", brand: "Prada", name: "Luna Rossa Black", desc: "An elite, dark office signature highlighting powdery coumarin and luxurious amber.", notes: ["Coumarin", "Amber", "Angelica Root"] },
-            { gender: "male", group: "mid", env: "daily", brand: "Hermes", name: "H24 EDP", desc: "A futuristic, clean daily signature showing metallic steam notes and botanical clary sage.", notes: ["Clary Sage", "Moss", "Rosewood"] },
-            { gender: "male", group: "mid", env: "beach", brand: "Louis Vuitton", name: "Pacific Chill", desc: "Pure luxury. A super-premium coastal fruit smoothie packed with orange and fresh basil.", notes: ["Orange", "Basil", "Mint", "Blackcurrant"] },
-            { gender: "male", group: "mid", env: "special", brand: "Tom Ford", name: "Noir Extreme Parfum", desc: "The ultimate night prestige. Opulent golden cardamom combined with exotic Indian kulfi.", notes: ["Cardamom", "Kulfi Ice Cream", "Leather", "Vanilla"] },
+            // 30-35 YAŞ GRUBU (Tam İstediğin Lüks Çizgi)
+            { gender: "male", group: "mid", env: "work", brand: "Bleu de Chanel EDP", desc: "The ultimate gold standard for corporate leadership. Crisp luxury citruses meeting rich incenses.", notes: ["Grapefruit", "Incense", "Amber", "Cedar"] },
+            { gender: "male", group: "mid", env: "daily", brand: "Dior", name: "Homme Intense", desc: "A legendary masterpiece of luxury. A deeply rich, sophisticated, and powdery iris trail.", notes: ["Iris", "Lavender", "Ambrette", "Cedar"] },
+            { gender: "male", group: "mid", env: "beach", brand: "Louis Vuitton", name: "Pacific Chill", desc: "Pure elite coastal escape. A super-premium coastal fruit smoothie packed with orange and fresh basil.", notes: ["Orange", "Basil", "Mint", "Blackcurrant"] },
+            { gender: "male", group: "mid", env: "special", brand: "Tom Ford", name: "Noir Extreme Parfum", desc: "Prestige in a bottle. Rich, warm oriental spices blended with exotic Indian kulfi ice cream.", notes: ["Cardamom", "Kulfi", "Leather", "Vanilla"] },
 
-            { gender: "male", group: "senior", env: "work", brand: "Narciso Rodriguez", name: "For Him Bleu Noir EDP", desc: "An intellectual corporate blend of raw blue musks, cardamom, and ebony wood.", notes: ["Musk", "Cardamom", "Ebony Wood"] },
-            { gender: "male", group: "senior", env: "daily", brand: "Acqua di Parma", name: "Colonia Club", desc: "Traditional Italian aristocracy refined with cooling mint leaves and clear galbanum resin.", notes: ["Mint", "Galbanum", "Bergamot"] },
-            { gender: "male", group: "senior", env: "beach", brand: "Bvlgari", name: "Aqva Amara", desc: "A rare, bitter luxury beach vibe displaying rich volcanic ozonic notes and patchouli.", notes: ["Bitter Orange", "Ozone", "Patchouli"] },
-            { gender: "male", group: "senior", env: "special", brand: "Parfums de Marly", name: "Oajan", desc: "An extraordinary niche winter masterpiece mimicking warm honey pudding and cinnamon.", notes: ["Honey", "Cinnamon", "Tonka Bean"] },
+            { gender: "male", group: "senior", env: "work", brand: "Hermes", name: "Terre d'Hermes Parfum", desc: "A pure wealth statement for professionals. Rich earthy mineral stones combined with dirty orange juice.", notes: ["Orange", "Flint", "Vetiver", "Benzoin"] },
+            { gender: "male", group: "senior", env: "daily", brand: "Creed", name: "Green Irish Tweed", desc: "Smells like a morning walk through a royal estate. Deeply sophisticated green verbena and iris.", notes: ["Lemon Verbena", "Iris", "Ambergris"] },
+            { gender: "male", group: "senior", env: "beach", brand: "Creed", name: "Erolfa", desc: "An ultra-premium, salty oceanic masterpiece mimicking private luxury yachts on the Mediterranean.", notes: ["Sea Notes", "Bergamot", "Ambergris"] },
+            { gender: "male", group: "senior", env: "special", brand: "Parfums de Marly", name: "Layton", desc: "An aristocratic niche evening legend. Creamy vanilla mixed with crisp apple and spicy cardamom.", notes: ["Apple", "Lavender", "Cardamom", "Vanilla"] },
 
-            { gender: "male", group: "mature", env: "work", brand: "Dunhill", name: "Century", desc: "A sophisticated, sharp architecture of clean cypriol oil, neroli, and sandalwood.", notes: ["Neroli", "Cypriol Oil", "Sandalwood"] },
-            { gender: "male", group: "mature", env: "daily", brand: "Lalique", name: "Hommage a l'Homme", desc: "A beautiful, powdery dry violet root and agarwood blend for cultured gentlemen.", notes: ["Violet Root", "Oud", "Saffron"] },
-            { gender: "male", group: "mature", env: "beach", brand: "Tom Ford", name: "Costa Azzurra Parfum", desc: "Elite coastal escape blending salty driftwood with aromatic evergreen oak needles.", notes: ["Driftwood", "Oak", "Cypress"] },
-            { gender: "male", group: "mature", env: "special", brand: "Initio", name: "Side Effect", desc: "A highly hypnotic, rich niche blend of high-end dark rum, tobacco, and vanilla.", notes: ["Rum", "Tobacco", "Vanilla"] },
+            { gender: "male", group: "mature", env: "work", brand: "Tom Ford", name: "Grey Vetiver EDP", desc: "The definitive scent of executive authority. Masterfully clean, smoky, and silver vetiver roots.", notes: ["Vetiver", "Grapefruit", "Nutmeg"] },
+            { gender: "male", group: "mature", env: "daily", brand: "Sospiro", name: "Vibrato", desc: "An exceptional, radiating niche miracle. Effervescent premium citruses paired with powdery iris roots.", notes: ["Bergamot", "Grapefruit", "Iris", "Musk"] },
+            { gender: "male", group: "mature", env: "beach", brand: "Tom Ford", name: "Costa Azzurra Parfum", desc: "Elite coastal luxury. Salty driftwood accords fused with aromatic coastal evergreen oaks.", notes: ["Driftwood", "Oak", "Cypress", "Salty Notes"] },
+            { gender: "male", group: "mature", env: "special", brand: "Initio", name: "Side Effect", desc: "Highly hypnotic niche performance. Rich dark rum barrels combined with sweet tobacco smoke.", notes: ["Rum", "Tobacco", "Vanilla", "Cinnamon"] },
 
-            { gender: "male", group: "extra1", env: "work", brand: "Guerlain", name: "L'Heure Bleue Pour Homme", desc: "Deep office confidence showing rich anise seed and soft classical powder accents.", notes: ["Anise", "Iris", "Bergamot"] },
-            { gender: "male", group: "extra1", env: "daily", brand: "Cartier", name: "Santos de Cartier", desc: "A powerful, wealthy classical statement utilizing warm nutmeg, sandalwood, and patchouli.", notes: ["Nutmeg", "Sandalwood", "Amber"] },
-            { gender: "male", group: "extra1", env: "beach", brand: "Creed", name: "Millesime Imperial", desc: "The fragrance of royalty. Marine sea salt crystals mixed with sweet watermelon oils.", notes: ["Sea Salt", "Watermelon", "Iris"] },
-            { gender: "male", group: "extra1", env: "special", brand: "Amouage", name: "Jubilation XXV", desc: "An imperial celebration in a bottle. Royal frankincense, dark blackberries, and honey.", notes: ["Blackberry", "Frankincense", "Honey"] },
+            { gender: "male", group: "extra1", env: "work", brand: "Cartier", name: "Declaration Parfum", desc: "Deeply elegant, mature corporate layout highlighting dark bitter orange and oriental spices.", notes: ["Bitter Orange", "Spices", "Cedarwood"] },
+            { gender: "male", group: "extra1", env: "daily", brand: "Guerlain", name: "L'Homme Ideal Extreme", desc: "An addictive daily treasure emphasizing sweet plum notes, powdery almonds, and rich leather.", notes: ["Plum", "Almond", "Tobacco", "Leather"] },
+            { gender: "male", group: "extra1", env: "beach", brand: "Acqua di Parma", name: "Fico di Amalfi", desc: "A scenic summer vacation. Stunningly realistic sweet green figs and vitalizing citrus oils.", notes: ["Fig Nectar", "Grapefruit", "Citron"] },
+            { gender: "male", group: "extra1", env: "special", brand: "Tom Ford", name: "Ombre Leather Parfum", desc: "The ultimate high-society evening choice. Ultra-premium rich black leather and violet leaves.", notes: ["Leather", "Violet Leaf", "Cedarwood", "Tobacco"] },
 
-            { gender: "male", group: "extra2", env: "work", brand: "Botega Veneta", name: "Illusion", desc: "A crisp, clean modern executive aroma driven by orange peel and rich cedar resin.", notes: ["Bitter Orange", "Cedar", "Fir Balsam"] },
-            { gender: "male", group: "extra2", env: "daily", brand: "Zegna", name: "Florentine Iris", desc: "The ultimate peak of clean linen luxury. Pure premium Italian iris root extract.", notes: ["Florentine Iris", "Bergamot", "Musk"] },
-            { gender: "male", group: "extra2", env: "beach", brand: "Acqua di Parma", name: "Arancia di Capri", desc: "An uplifting, sunny paradise highlighting realistic juicy orange and mandarin juice.", notes: ["Orange", "Mandarin", "Caramel"] },
-            { gender: "male", group: "extra2", env: "special", brand: "Roja Parfums", name: "Enigma Pour Homme", desc: "An elite niche presentation resembling luxury cognac barrels mixed with tobacco vanilla.", notes: ["Cognac", "Tobacco", "Benzoin"] },
+            { gender: "male", group: "extra2", env: "work", brand: "Chanel", name: "Platinum Egoiste", desc: "The iconic standard of wealthy barbershop confidence. Metallic, sharp, clean, and dominant.", notes: ["Lavender", "Rosemary", "Oakmoss"] },
+            { gender: "male", group: "extra2", env: "daily", brand: "Creed", name: "Aventus", desc: "The king of kings. An internationally praised, wealthy signature of smoky pineapple and birch wood.", notes: ["Pineapple", "Birch Wood", "Bergamot", "Musk"] },
+            { gender: "male", group: "extra2", env: "beach", brand: "Creed", name: "Millesime Imperial", desc: "The scent of royalty on the coastline. Pure marine sea salt crystals mixed with sweet watermelon oils.", notes: ["Sea Salt", "Watermelon", "Fruity Notes", "Iris"] },
+            { gender: "male", group: "extra2", env: "special", brand: "Roja Parfums", name: "Enigma Pour Homme", desc: "Unrivaled ultra-niche prestige. Resembles elite cognac barrels melting into tobacco vanilla vanilla.", notes: ["Cognac", "Tobacco", "Benzoin", "Ginger"] },
 
-            { gender: "male", group: "extra3", env: "work", brand: "Penhaligon's", name: "Sartorial", desc: "Smells exactly like a luxury tailor shop in London. Clean steam, beeswax, and leather.", notes: ["Beeswax", "Metallic Notes", "Leather"] },
-            { gender: "male", group: "extra3", env: "daily", brand: "Hermes", name: "Equipage", desc: "A historic standard of true masculine refinement. Aromatic spices and rich vintage woods.", notes: ["Spices", "Rosewood", "Oakmoss"] },
-            { gender: "male", group: "extra3", env: "beach", brand: "Tom Ford", name: "Mandarino di Amalfi", desc: "A scenic flight over the Italian coast. Sharp wild mint leaves and glowing lemons.", notes: ["Mint", "Lemon", "Tarragon"] },
-            { gender: "male", group: "extra3", env: "special", brand: "Clive Christian", name: "X Pour Homme", desc: "Uncompromising rare luxury. Rich spicy cardamom seeds fused with raw dark iris.", notes: ["Cardamom", "Iris", "Cinnamon"] },
+            { gender: "male", group: "extra3", env: "work", brand: "Penhaligon's", name: "Sartorial", desc: "Smells exactly like a multi-million dollar tailor shop in London. Clean steam, beeswax, and leather.", notes: ["Beeswax", "Metallic Notes", "Leather", "Lavender"] },
+            { gender: "male", group: "extra3", brand: "Hermes", name: "Equipage", desc: "A timeless, historic pinnacle of gentlemanly refinement using rich vintage woods and spices.", notes: ["Spices", "Rosewood", "Oakmoss"] },
+            { gender: "male", group: "extra3", env: "beach", brand: "Tom Ford", name: "Mandarino di Amalfi", desc: "A luxury escape over the Italian coast. Sharp wild mint leaves and glowing lemons.", notes: ["Mint", "Lemon", "Tarragon", "Basil"] },
+            { gender: "male", group: "extra3", env: "special", brand: "Amouage", name: "Jubilation XXV", desc: "An imperial celebration in a bottle. Royal frankincense threads, dark blackberries, and wild honey.", notes: ["Blackberry", "Frankincense", "Honey", "Oud"] },
 
 
             // === KADIN PARFÜMLERİ ===
-            { gender: "female", group: "teen", env: "school", brand: "Marc Jacobs", name: "Daisy Love", desc: "Sweet cloudberries mixed with warm daisy petals. Completely innocent and bright.", notes: ["Cloudberry", "Daisy", "Driftwood Musk"] },
-            { gender: "female", group: "teen", env: "daily", brand: "Zara", name: "Orchid", desc: "Fresh orchid stems mixed with bright, sugary bergamot juice for daily comfort.", notes: ["Orchid", "Bergamot", "Peach"] },
-            { gender: "female", group: "teen", env: "beach", brand: "Clean Reserve", name: "Warm Cotton", desc: "Smells exactly like freshly washed white t-shirts drying in the summer breeze.", notes: ["Sea Salt", "Cotton Flower", "Mint"] },
-            { gender: "female", group: "teen", env: "special", brand: "Aquolina", name: "Pink Sugar", desc: "A nostalgic, fun candy cloud made of heavy spun sugar and warm caramel syrup.", notes: ["Cotton Candy", "Caramel", "Licorice"] },
+            { gender: "female", group: "teen", env: "school", brand: "Marc Jacobs", name: "Daisy Eau So Fresh", desc: "A bright, high-end fruity-floral twist that feels completely playful, clean, and sparkling.", notes: ["Raspberry", "Green Notes", "Pear"] },
+            { gender: "female", group: "teen", env: "daily", brand: "Chloé", name: "Chloé Rose Tangerine", desc: "A highly elegant, clean setup showcasing clear modern morning roses and juicy tangerines.", notes: ["Tangerine", "Rose", "Blackcurrant"] },
+            { gender: "female", group: "teen", env: "beach", brand: "Clean Reserve", name: "Warm Cotton", desc: "Smells beautifully like crisp, luxury 5-star hotel sheets drying under the bright sun.", notes: ["Sea Salt", "Cotton Flower", "Mint"] },
+            { gender: "female", group: "teen", env: "special", brand: "Viktor & Rolf", name: "Flowerbomb", desc: "A brilliant, universally praised sweet explosion of rich orchids, jasmine flowers, and patchouli.", notes: ["Orchid", "Jasmine", "Patchouli", "Rose"] },
 
-            { gender: "female", group: "young", env: "school", brand: "Cacharel", name: "Noa", desc: "A soft, angelic cloud of white musk, baby powder, and a tiny hint of coffee.", notes: ["White Musk", "Peony", "Coffee"] },
-            { gender: "female", group: "young", env: "work", brand: "Lancome", name: "Idole Aura", desc: "A modern business rose salted gently with clean mineral notes and vanilla.", notes: ["Salt", "Rose", "Vanilla"] },
-            { gender: "female", group: "young", env: "daily", brand: "Chloe", name: "Love Story", desc: "A romantic, bubbly daily choice based on fresh orange blossoms and clean cedar.", notes: ["Orange Blossom", "Stephanotis", "Cedar"] },
-            { gender: "female", group: "young", env: "beach", brand: "Sol de Janeiro", name: "Cheirosa 62", desc: "Breezy Brazilian beach energy celebrating warm toasted pistachio and caramel.", notes: ["Pistachio", "Salted Caramel", "Vanilla"] },
-            { gender: "female", group: "young", env: "special", brand: "Burberry", name: "Her London Dream", desc: "A sparkling, addictive evening option highlighting fresh lemon and ginger hints.", notes: ["Ginger", "Lemon", "Peony"] },
+            { gender: "female", group: "young", env: "school", brand: "Chanel", name: "Chance Eau Tendre EDT", desc: "The ultimate 'clean girl' school classic. Extremely radiant, powdery quince fruit and jasmine.", notes: ["Quince", "Jasmine", "White Musk"] },
+            { gender: "female", group: "young", env: "work", brand: "Lancome", name: "Idole Intense", desc: "A more intense, powerful modern rose signature tailored for young aspiring career women.", notes: ["Rose", "Jasmine", "Bitter Orange", "Patchouli"] },
+            { gender: "female", group: "young", env: "daily", brand: "Burberry", name: "Her EDP", desc: "A massive, gorgeous success. Delicious wild strawberries mixed seamlessly with warm amberwoods.", notes: ["Strawberry", "Blackberry", "Amber"] },
+            { gender: "female", group: "young", env: "beach", brand: "Versace", name: "Bright Crystal Absolu", desc: "A boosted, long-lasting luxury summer pink blend packed with pomegranate and iced yuzu.", notes: ["Pomegranate", "Yuzu", "Peony", "Raspberry"] },
+            { gender: "female", group: "young", env: "special", brand: "Carolina Herrera", name: "Good Girl Supreme", desc: "The iconic stiletto elevated. Intensely seductive forest berries melting over roasted tonka beans.", notes: ["Forest Berries", "Tonka Bean", "Egyptian Jasmine"] },
 
-            { gender: "female", group: "extra4", env: "school", brand: "Philosophy", name: "Amazing Grace", desc: "The ultimate clean girl scent. Crisp bergamot blended with soft lily-of-the-valley.", notes: ["Bergamot", "Lily-of-the-Valley", "Musk"] },
-            { gender: "female", group: "extra4", env: "work", brand: "Estee Lauder", name: "Modern Muse", desc: "An elegant, dynamic professional blend matching sparkling jasmine with sleek woods.", notes: ["Jasmine", "Sleek Woods", "Mandarin"] },
-            { gender: "female", group: "extra4", env: "daily", brand: "Giorgio Armani", name: "Si Fiori", desc: "A cozy daily hug consisting of soft sweet blackcurrant syrup and white neroli.", notes: ["Blackcurrant", "Neroli", "Vanilla"] },
-            { gender: "female", group: "extra4", env: "beach", brand: "Dolce & Gabbana", name: "Light Blue Sun", desc: "Coconut water infused with classic Light Blue lemon juice for high summer bliss.", notes: ["Coconut", "Lemon", "Frangipani"] },
-            { gender: "female", group: "extra4", env: "special", brand: "Yves Saint Laurent", name: "Black Opium Le Parfum", desc: "A highly hypnotic evening statement loaded with four massive premium vanilla notes.", notes: ["Quad Vanilla", "Coffee", "White Flowers"] },
+            { gender: "female", group: "extra4", env: "school", brand: "Jo Malone", name: "English Pear & Freesia", desc: "Stunning British elegance. Crisp, fresh green pears wrapped beautifully in white freesia petals.", notes: ["Pear", "Freesia", "Patchouli"] },
+            { gender: "female", group: "extra4", env: "work", brand: "Dior", name: "Miss Dior EDP", desc: "An incredibly sophisticated professional bouquet packed with sweet milling roses and soft iris root.", notes: ["Iris", "Peony", "Lily-of-the-Valley", "Rose"] },
+            { gender: "female", group: "extra4", env: "daily", brand: "Byredo", name: "Blanche", desc: "The ultimate luxury definition of clean laundry. Crisp white aldehydes meeting clean musks.", notes: ["Aldehydes", "White Rose", "Musk"] },
+            { gender: "female", group: "extra4", env: "beach", brand: "Dolce & Gabbana", name: "Light Blue Intense", desc: "The absolute queen of summer oceans. Sharp frozen lemon slices mixed with heavy sea salt crust.", notes: ["Lemon", "Marigold", "Amberwood", "Musk"] },
+            { gender: "female", group: "extra4", env: "special", brand: "Yves Saint Laurent", name: "Black Opium Le Parfum", desc: "The ultimate night prestige. Hypnotic dark coffee blended with four massive premium vanilla notes.", notes: ["Quad Vanilla", "Coffee", "White Flowers"] },
 
-            { gender: "female", group: "mid", env: "work", brand: "Chanel", name: "Chance Eau Tendre EDP", desc: "The pinnacle of corporate refinement. Soft, powdery quince fruit and pure jasmine.", notes: ["Quince", "Jasmine", "Rose"] },
-            { gender: "female", group: "mid", env: "daily", brand: "Jo Malone", name: "Wood Sage & Sea Salt", desc: "A highly calming, peaceful daily wave of sea salt crust and herbal sage bushes.", notes: ["Sea Salt", "Sage", "Ambrette"] },
-            { gender: "female", group: "mid", env: "beach", brand: "Guerlain", name: "Aqua Allegoria Coconut Fizz", desc: "Elite beach vacation energy. Fresh coconut water splashed with juicy freesia petals.", notes: ["Coconut Water", "Freesia", "Sandalwood"] },
-            { gender: "female", group: "mid", env: "special", brand: "Parfums de Marly", name: "Delina", desc: "The master of modern niche night trails. Rich Turkish rose petals and fresh rhubarb.", notes: ["Turkish Rose", "Rhubarb", "Lychee"] },
+            { gender: "female", group: "mid", env: "work", brand: "Chanel", name: "Chance Eau Tendre EDP", desc: "The undisputed queen of corporate grace. Masterfully clean, powdery quince fruit and roses.", notes: ["Quince", "Jasmine", "Rose", "White Musk"] },
+            { gender: "female", group: "mid", env: "daily", brand: "Yves Saint Laurent", name: "Libre Intense", desc: "The ultimate daily power move. Rich, warm French lavender syrup mixed with heavy bourbon vanilla.", notes: ["Lavender", "Bourbon Vanilla", "Orange Blossom", "Amber"] },
+            { gender: "female", group: "mid", env: "beach", brand: "Guerlain", name: "Aqua Allegoria Coconut Fizz", desc: "Elite beach vacation luxury. Fresh exotic coconut water splashed with clean freesia flowers.", notes: ["Coconut Water", "Freesia", "Sandalwood"] },
+            { gender: "female", group: "mid", env: "special", brand: "Parfums de Marly", name: "Delina", desc: "The master of elite niche night trails. Spectacular Turkish rose petals mixed with crisp pink rhubarb.", notes: ["Turkish Rose", "Rhubarb", "Lychee", "Incense"] },
 
-            { gender: "female", group: "senior", env: "work", brand: "Prada", name: "Infusion d'Iris", desc: "Smells like a luxury 5-star hotel sheet. Elegant dry iris root and clean neroli oils.", notes: ["Iris", "Neroli", "Cedarwood"] },
-            { gender: "female", group: "senior", env: "daily", brand: "Byredo", name: "Bal d'Afrique", desc: "An absolute artistic daily fantasy mixing african marigold with Moroccan cedarwood.", notes: ["Marigold", "Vetiver", "Bergamot"] },
-            { gender: "female", group: "senior", env: "beach", brand: "Tom Ford", name: "Eau de Soleil Blanc", desc: "Sparkling private beach luxury full of radiant solar citruses and white musk.", notes: ["Coconut Water", "Ylang-Ylang", "Citrus"] },
-            { gender: "female", group: "senior", env: "special", brand: "Maison Francis Kurkdjian", name: "Gentle Fluidity Gold", desc: "An outstanding golden cloud of heavy bourbon vanilla, amber woods, and fresh musk.", notes: ["Vanilla", "Amber", "Musk"] },
+            { gender: "female", group: "senior", env: "work", brand: "Prada", name: "Infusion d'Iris", desc: "Smells like pure wealth. Elegant, clean dry iris root extract combined with fresh neroli oils.", notes: ["Iris", "Neroli", "Cedarwood", "Benzoin"] },
+            { gender: "female", group: "senior", env: "daily", brand: "Chanel", name: "Coco Mademoiselle Intense", desc: "Unmatched global signature of wealth. Sparkling rich citruses layered with intense dark patchouli.", notes: ["Patchouli", "Orange", "Tonka Bean", "Vanilla"] },
+            { gender: "female", group: "senior", env: "beach", brand: "Tom Ford", name: "Eau de Soleil Blanc", desc: "Private island luxury. Radiant, sparkling solar citruses mixed with rich creamy coconut milk.", notes: ["Coconut Milk", "Ylang-Ylang", "Pistachio", "Bergamot"] },
+            { gender: "female", group: "senior", env: "special", brand: "Maison Francis Kurkdjian", name: "Gentle Fluidity Gold", desc: "An outstanding golden niche aura of heavy premium vanilla, amber woods, and clean fresh musk.", notes: ["Vanilla", "Amber", "Musk", "Juniper Berries"] },
 
-            { gender: "female", group: "mature", env: "work", brand: "Giorgio Armani", name: "Si Passione", desc: "An empowering, confident red statement mixing sharp blackcurrant with deep roses.", notes: ["Blackcurrant", "Rose", "Vanilla"] },
-            { gender: "female", group: "mature", env: "daily", brand: "Dior", name: "Miss Dior Absolutely Blooming", desc: "A deep, fruity-floral joy packed with thick raspberries and premium Grasse roses.", notes: ["Raspberry", "Grasse Rose", "Pomegranate"] },
-            { gender: "female", group: "mature", env: "beach", brand: "Estee Lauder", name: "Bronze Goddess EDP", desc: "Warm beach luxury filled with creamy coconut milk, rich tiare flowers, and amber.", notes: ["Coconut", "Tiare Flower", "Amber"] },
-            { gender: "female", group: "mature", env: "special", brand: "Xerjoff", name: "Lira", desc: "An exceptional niche dessert trail. Blood orange glaze melting over warm caramel.", notes: ["Blood Orange", "Caramel", "Vanilla"] },
+            { gender: "female", group: "mature", env: "work", brand: "Tom Ford", name: "Velvet Orchid", desc: "An empowering, highly confident corporate presence matching dark black orchids with rum notes.", notes: ["Black Orchid", "Rum", "Honey", "Myrrh"] },
+            { gender: "female", group: "mature", env: "daily", brand: "Byredo", name: "Bal d'Afrique", desc: "An absolute artistic daily fantasy mixing bright african marigold flowers with clear Moroccan cedarwood.", notes: ["Marigold", "Vetiver", "Bergamot", "Cedarwood"] },
+            { gender: "female", group: "mature", env: "beach", brand: "Estee Lauder", name: "Bronze Goddess EDP", desc: "Warm high-end beach luxury filled with creamy coconut milk, rich tiare flowers, and deep amber.", notes: ["Coconut", "Tiare Flower", "Amber", "Vanilla"] },
+            { gender: "female", group: "mature", env: "special", brand: "Xerjoff", name: "Lira", desc: "An exceptional niche dessert trail. Freshly baked blood orange cake melting over warm caramel.", notes: ["Blood Orange", "Caramel", "Vanilla", "Cinnamon"] },
 
-            { gender: "female", group: "extra1", env: "work", brand: "Narciso Rodriguez", name: "Pure Musc", desc: "An incredibly pristine, sophisticated musk that radiates modern corporate confidence.", notes: ["Musk", "White Flowers", "Cashmeran"] },
-            { gender: "female", group: "extra1", env: "daily", brand: "Yves Saint Laurent", name: "Libre Intense", desc: "A heavy, warm statement mixing classical French lavender with thick vanilla syrup.", notes: ["Lavender", "Vanilla", "Amber"] },
-            { gender: "female", group: "extra1", env: "beach", brand: "Maison Margiela", name: "Replica Beach Walk", desc: "Perfectly mirrors hot ocean sand, salt water, and luxurious solar sunscreen notes.", notes: ["Coconut Milk", "Ylang-Ylang", "Bergamot"] },
-            { gender: "female", group: "extra1", env: "special", brand: "Dior", name: "Hypnotic Poison", desc: "A deeply hypnotic, mysterious evening potion dominated by bitter almond dust.", notes: ["Almond", "Vanilla", "Caraway"] },
+            { gender: "female", group: "extra1", env: "work", brand: "Narciso Rodriguez", name: "Pure Musc", desc: "An incredibly pristine, sophisticated musk that radiates unparalleled modern executive confidence.", notes: ["Musk", "White Flowers", "Cashmeran"] },
+            { gender: "female", group: "extra1", env: "daily", brand: "Dior", name: "Miss Dior Absolutely Blooming", desc: "A deep, fruity-floral joy packed with thick French raspberries and premium Grasse roses.", notes: ["Raspberry", "Grasse Rose", "Pomegranate", "Blackcurrant"] },
+            { gender: "female", group: "extra1", env: "beach", brand: "Maison Margiela", name: "Replica Beach Walk", desc: "Perfectly mirrors hot ocean sand, salty coastal air, and ultra-luxurious solar sunscreens.", notes: ["Coconut Milk", "Ylang-Ylang", "Bergamot", "Lemon"] },
+            { gender: "female", group: "extra1", env: "special", brand: "Kilian", name: "Love Don't Be Shy", desc: "The ultimate premium gourmet masterpiece. Fluffy white marshmallows drenched in orange blossom vanilla.", notes: ["Marshmallow", "Orange Blossom", "Vanilla", "Honeysuckle"] },
 
-            { gender: "female", group: "extra2", env: "work", brand: "Hermes", name: "Twilly d'Hermes", desc: "A creative corporate profile mixing sharp fresh ginger root with sweet tuberose.", notes: ["Ginger", "Tuberose", "Sandalwood"] },
-            { gender: "female", group: "extra2", env: "daily", brand: "Sisley", name: "Eau du Soir", desc: "The definitive scent of wealth and high society. Complex mosses and elite florals.", notes: ["Oakmoss", "Iris", "Patchouli"] },
-            { gender: "female", group: "extra2", env: "beach", brand: "Van Cleef & Arpels", name: "California Reverie", desc: "A sun-kissed walk through private coastal gardens filled with fresh frangipani.", notes: ["Frangipani", "Jasmine", "Mandarin"] },
-            { gender: "female", group: "extra2", env: "special", brand: "Kilian", name: "Love Don't Be Shy", desc: "The ultimate gourmet masterpiece. Fluffy white marshmallows drenched in vanilla.", notes: ["Marshmallow", "Orange Blossom", "Vanilla"] },
+            { gender: "female", group: "extra2", env: "work", brand: "Hermes", name: "Twilly d'Hermes", desc: "A highly creative corporate profile mixing sharp fresh ginger roots with sweet tuberose fields.", notes: ["Ginger", "Tuberose", "Sandalwood"] },
+            { gender: "female", group: "extra2", env: "daily", brand: "Sisley", name: "Eau du Soir", desc: "The absolute historical scent of high society and wealth. Complex luxury mosses and elite iris.", notes: ["Oakmoss", "Iris", "Patchouli", "Juniper"] },
+            { gender: "female", group: "extra2", env: "beach", brand: "Van Cleef & Arpels", name: "California Reverie", desc: "A sun-kissed stroll through private coastal gardens filled with fresh exotic frangipani blossoms.", notes: ["Frangipani", "Jasmine", "Mandarin Orange"] },
+            { gender: "female", group: "extra2", env: "special", brand: "Maison Francis Kurkdjian", name: "Baccarat Rouge 540", desc: "A legendary niche masterpiece showcasing highly expensive saffron threads and warm golden amberwoods.", notes: ["Saffron", "Amberwood", "Ambergris", "Fir Resin"] },
 
-            { gender: "female", group: "extra3", env: "work", brand: "Dior", name: "J'adore EDP", desc: "A majestic golden bouquet of rare damask roses, exotic ylang-ylang, and jasmine.", notes: ["Ylang-Ylang", "Damask Rose", "Jasmine"] },
-            { gender: "female", group: "extra3", env: "daily", brand: "Hermes", name: "Eau des Merveilles", desc: "An enchanting, warm woody-amber glow entirely free from dominant heavy flowers.", notes: ["Ambergris", "Orange", "Elemi Resin"] },
-            { gender: "female", group: "extra3", env: "beach", brand: "Hermes", name: "Un Jardin En Mediterranee", desc: "Strolling through royal sea-facing yards filled with green fresh fig leaves.", notes: ["Fig Leaf", "Cypress", "Cedar"] },
-            { gender: "female", group: "extra3", env: "special", brand: "Maison Francis Kurkdjian", name: "Baccarat Rouge 540", desc: "A legendary masterpiece showcasing expensive saffron threads and golden amberwoods.", notes: ["Saffron", "Jasmine", "Amberwood"] }
+            { gender: "female", group: "extra3", env: "work", brand: "Dior", name: "J'adore EDP", desc: "A majestic, historic golden bouquet of rare damask roses, exotic ylang-ylang, and clean jasmine.", notes: ["Ylang-Ylang", "Damask Rose", "Jasmine"] },
+            { gender: "female", group: "extra3", env: "daily", brand: "Hermes", name: "Eau des Merveilles", desc: "An enchanting, warm woody-amber summer coast glow that is beautifully free from heavy flowers.", notes: ["Ambergris", "Orange", "Elemi Resin", "Fir Woods"] },
+            { gender: "female", group: "extra3", env: "beach", brand: "Hermes", name: "Un Jardin En Mediterranee", desc: "Strolling through royal sea-facing Mediterranean yards filled with green fresh fig leaves.", notes: ["Fig Leaf", "Cypress", "Cedar", "Bergamot"] },
+            { gender: "female", group: "extra3", env: "special", brand: "Clive Christian", name: "No. 1 Feminine", desc: "Uncompromising rare luxury. Rare powdery oriental notes blended with rich legacy vanilla extracts.", notes: ["Powdery Notes", "Vanilla", "Ylang-Ylang", "Sandalwood"] }
         ];
 
         function selectGender(gender, btn) {
@@ -377,7 +377,6 @@
             let startAge = parseInt(selections.age.split('-')[0]);
             let mappedGroup = "teen";
 
-            // HATANIN ÇÖZÜLDÜĞÜ KRİTİK KONTROL NOKTASI (>= mantığı eklendi)
             if (startAge >= 10 && startAge < 20) mappedGroup = "teen";
             else if (startAge >= 20 && startAge < 25) mappedGroup = "young";
             else if (startAge >= 25 && startAge < 30) mappedGroup = "extra4";
